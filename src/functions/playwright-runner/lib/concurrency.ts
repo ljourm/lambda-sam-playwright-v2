@@ -1,4 +1,4 @@
-const CONCURRENCY_LIMIT = 4; // 同時実行数の上限
+import { CONCURRENCY_LIMIT } from "./const";
 
 export const processConcurrent = async <T>(
   task: (item: T) => Promise<void>,

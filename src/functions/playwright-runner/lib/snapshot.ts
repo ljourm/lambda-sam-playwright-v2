@@ -1,8 +1,7 @@
 import { Page } from "playwright-core";
 
+import { SNAPSHOT_TIMEOUT_MS, VIEWPORT_HEIGHT } from "./const";
 import { PlaywrightRunnerTarget } from "./types";
-
-const VIEWPORT_HEIGHT = 1080; // 全画面を取得するため、高さはなんでもいいため固定値とする
 
 const isSuccessfulStatus = (status?: number): boolean => {
   if (!status) return false;
