@@ -1,0 +1,168 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  sam-app
+Transform:
+  - AWS::Serverless-2016-10-31
+
+Parameters:
+  ProjectName:
+    Type: String
+    Default: "lambda-sam-playwright-v2"
+  CreatedBy:
+    Type: String
+    Default: "sam-cli"
+  Env:
+    Type: String
+    AllowedValues:
+      - prd
+      - stg
+      - local
+
+# https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/sam-specification-template-anatomy-globals.html
+Globals:
+  Function:
+    Tracing: Active
+    Runtime: &nodejsRuntime nodejs22.x
+    Architectures:
+      # Armを使用したいが、@sparticuz/chromium@141がarmをサポートしていないため、x86_64を指定
+      - &chromiumArch x86_64
+    Handler: index.handler
+    MemorySize: 128
+    Timeout: 3
+    LoggingConfig:
+      LogFormat: JSON
+    EventInvokeConfig:
+      MaximumRetryAttempts: 0
+    Environment:
+      Variables:
+        NODE_OPTIONS: --enable-source-maps
+        ENV: !Ref Env
+    Tags:
+      Project: !Ref ProjectName
+      CreatedBy: !Ref CreatedBy
+  Api:
+    TracingEnabled: true
+    # Stageの生成を無効化するために設定、OpenAPIは使用していない: https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/sam-resource-api.html#sam-api-openapiversion
+    OpenApiVersion: 3.0.2
+
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html
+Resources:
+  # ---- ChromiumLayer Layer start ----
+  # https://github.com/Sparticuz/chromium/blob/dd57f035695c6773e17768176bda1910b1e39287/examples/aws-sam/template.yml
+  ChromiumLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      Description: Chromium with Node.js integration for AWS Lambda
+      ContentUri: src/layers/chromium
+      CompatibleRuntimes:
+        - *nodejsRuntime
+      CompatibleArchitectures:
+        - *chromiumArch
+      RetentionPolicy: Delete
+    Metadata:
+      BuildMethod: *nodejsRuntime
+      BuildArchitecture: *chromiumArch
+  # ---- ChromiumLayer Layer end ----
+
+  # ---- ApiHealthcheck Function start ----
+  ApiHealthcheckFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${ProjectName}-${Env}-health"
+      Description: Healthcheck function
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /api/healthcheck
+            Method: GET
+    Metadata:
+      BuildMethod: makefile
+  ApiHealthcheckFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${ApiHealthcheckFunction}
+      RetentionInDays: 90
+  # ---- ApiHealthcheck Function end ----
+
+  # ---- ApiV1Snapshot Function start ----
+  ApiV1SnapshotFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${ProjectName}-${Env}-v1-snapshot"
+      Description: V1 snapshot function
+      Environment:
+        Variables:
+          PLAYWRIGHT_RUNNER_FUNCTION_NAME: !Sub "${ProjectName}-${Env}-playwright-runner"
+      Policies:
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - lambda:InvokeFunction
+              Resource: !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:${ProjectName}-${Env}-playwright-runner"
+      Events:
+        Api:
+          Type: Api
+          Properties:
+            Path: /api/v1/snapshot
+            Method: POST
+    Metadata:
+      BuildMethod: makefile
+  ApiV1SnapshotFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${ApiV1SnapshotFunction}
+      RetentionInDays: 90
+  # ---- ApiV1Snapshot Check Function end ----
+
+  # ---- Playwright Runner Function start ----
+  PlaywrightRunnerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${ProjectName}-${Env}-playwright-runner"
+      Description: Playwright runner function
+      Timeout: 300 # 5分
+      MemorySize: 2048 # 2GB
+      Layers:
+        - !Ref ChromiumLayer
+      Environment:
+        Variables:
+          S3_DEST_BUCKET_NAME: !Sub "${ProjectName}-${Env}-snapshot"
+      Policies:
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Action:
+                - s3:PutObject
+              Resource: !Sub "arn:aws:s3:::${ProjectName}-${Env}-snapshot/*"
+    Metadata:
+      BuildMethod: makefile
+  PlaywrightRunnerFunctionLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/${PlaywrightRunnerFunction}
+      RetentionInDays: 90
+  # ---- Playwright Runner Function end ----
+
+  S3SnapshotBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${ProjectName}-${Env}-snapshot"
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: CreatedBy
+          Value: !Ref CreatedBy
+      LifecycleConfiguration:
+        Rules:
+          - Status: Enabled
+            ExpirationInDays: 90
+
+Outputs:
+  ApiV1HealthFunctionApi:
+    Description: "API Gateway URL for ApiV1HealthFunction"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/health"
+  ApiV1SnapshotFunctionApi:
+    Description: "API Gateway URL for ApiV1SnapshotFunction"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/snapshot"

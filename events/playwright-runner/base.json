@@ -1,0 +1,9 @@
+{
+  "timestamp": "20250123012345",
+  "baseUrl": "https://example.com/",
+  "targets": [
+    { "path": "/", "width": 1200 },
+    { "path": "/", "width": 480 },
+    { "path": "/articles/", "width": 1200 }
+  ]
+}

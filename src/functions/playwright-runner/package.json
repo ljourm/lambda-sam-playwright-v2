@@ -1,0 +1,7 @@
+{
+  "name": "playwright-runner",
+  "private": true,
+  "dependencies": {
+    "playwright-core": "^1.56.1"
+  }
+}

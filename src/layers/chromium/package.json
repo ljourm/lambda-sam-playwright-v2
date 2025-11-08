@@ -1,0 +1,8 @@
+{
+  "name": "ChromiumLayer",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@sparticuz/chromium": "^141.0.0"
+  }
+}

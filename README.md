@@ -17,3 +17,13 @@ AWS Lambda上でPlaywrightを実行するためのTypeScriptプロジェクト�
   - AWS SAM
 - Playwright
 - Docker
+
+## ドキュメント
+
+- [開発環境の構築](./docs/setup.md)
+- [デプロイ手順](./docs/deployment.md)
+
+## 環境構成図
+
+![環境構成図](./docs/architecture.svg)
+[環境構成図 - 元データ(draw.io)](./docs/architecture.drawio)
