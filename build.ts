@@ -1,5 +1,6 @@
-import { build } from "esbuild";
 import { globSync } from "node:fs";
+
+import { build } from "esbuild";
 
 const entryPoints = globSync("./src/functions/*/index.ts");
 

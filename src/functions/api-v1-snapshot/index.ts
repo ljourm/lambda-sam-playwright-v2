@@ -1,5 +1,5 @@
-import type { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
+import type { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
 import { format } from "date-fns";
 
 type RequestBody = {
