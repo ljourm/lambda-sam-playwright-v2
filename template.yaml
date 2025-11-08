@@ -64,6 +64,20 @@ Resources:
       BuildArchitecture: *chromiumArch
   # ---- ChromiumLayer Layer end ----
 
+  # ---- NotoSansJPLayer Layer start ----
+  NotoSansJPLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: noto-sans-jp
+      Description: NotoSansJP font for Chromium
+      ContentUri: src/layers/font
+      CompatibleRuntimes:
+        - nodejs22.x
+      CompatibleArchitectures:
+        - arm64
+      RetentionPolicy: Delete
+  # ---- NotoSansJPLayer Layer end ----
+
   # ---- ApiHealthcheck Function start ----
   ApiHealthcheckFunction:
     Type: AWS::Serverless::Function
@@ -123,9 +137,10 @@ Resources:
       FunctionName: !Sub "${ProjectName}-${Env}-playwright-runner"
       Description: Playwright runner function
       Timeout: 300 # 5分
-      MemorySize: 2048 # 2GB
+      MemorySize: 3008 # 2GB
       Layers:
         - !Ref ChromiumLayer
+        - !Ref NotoSansJPLayer
       Environment:
         Variables:
           S3_DEST_BUCKET_NAME: !Sub "${ProjectName}-${Env}-snapshot"

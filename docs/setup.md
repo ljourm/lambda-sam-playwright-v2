@@ -36,6 +36,13 @@
 
 ## ビルド
 
+### フォントの準備
+
+```sh
+mkdir -p src/layers/font/fonts
+curl -L -o src/layers/font/fonts/NotoSansJP.ttf "https://github.com/google/fonts/raw/main/ofl/notosansjp/NotoSansJP%5Bwght%5D.ttf"
+```
+
 ### SAMプロジェクトのビルド
 
 ```sh

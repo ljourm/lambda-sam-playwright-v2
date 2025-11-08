@@ -25,3 +25,5 @@ Thumbs.db
 coverage/
 
 .aws-sam
+
+src/layers/font
