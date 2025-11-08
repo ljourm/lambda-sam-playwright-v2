@@ -1,0 +1,9 @@
+node_modules/
+pnpm-lock.yaml
+
+dist/
+.aws-sam/
+*.log
+*.tsbuildinfo
+
+*.md
