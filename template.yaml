@@ -137,7 +137,7 @@ Resources:
       FunctionName: !Sub "${ProjectName}-${Env}-playwright-runner"
       Description: Playwright runner function
       Timeout: 300 # 5分
-      MemorySize: 3008 # 2GB
+      MemorySize: 2048 # 2GB
       Layers:
         - !Ref ChromiumLayer
         - !Ref NotoSansJPLayer
