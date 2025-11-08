@@ -4,7 +4,7 @@ import chromium from "@sparticuz/chromium";
 import { PlaywrightRunnerEvent, PlaywrightRunnerTarget } from "./lib/types";
 import { snapshots } from "./lib/snapshot";
 import { uploadToS3 } from "./lib/s3";
-import { getS3Key, getS3KeyPrefix } from "./lib/s3Key";
+import { getS3Key, getS3KeyPrefix } from "./lib/fileName";
 import { saveToFile } from "./lib/file";
 import { processConcurrent } from "./lib/concurrency";
 import { callNextLambda } from "./lib/lambda";
