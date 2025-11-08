@@ -1,5 +1,5 @@
 import { Page } from "playwright-core";
-import { PlaywrightRunnerTarget } from "../types";
+import { PlaywrightRunnerTarget } from "./types";
 
 const VIEWPORT_HEIGHT = 1080; // 全画面を取得するため、高さはなんでもいいため固定値とする
 

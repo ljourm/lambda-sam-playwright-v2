@@ -1,14 +1,14 @@
 import { Context } from "aws-lambda";
 import { chromium as playwright } from "playwright-core";
 import chromium from "@sparticuz/chromium";
-import { PlaywrightRunnerEvent, PlaywrightRunnerTarget } from "./types";
-import { snapshots } from "./playwright/snapshot";
-import { uploadToS3 } from "./aws/s3";
-import { getS3Key, getS3KeyPrefix } from "./aws/s3Key";
-import { saveToFile } from "./util/file";
-import { processConcurrent } from "./util/concurrency";
-import { callNextLambda } from "./aws/lambda";
-import { getSafeEnv } from "./util/env";
+import { PlaywrightRunnerEvent, PlaywrightRunnerTarget } from "./lib/types";
+import { snapshots } from "./lib/snapshot";
+import { uploadToS3 } from "./lib/s3";
+import { getS3Key, getS3KeyPrefix } from "./lib/s3Key";
+import { saveToFile } from "./lib/file";
+import { processConcurrent } from "./lib/concurrency";
+import { callNextLambda } from "./lib/lambda";
+import { getSafeEnv } from "./lib/env";
 
 const MAX_LOOP_COUNT = 5; // Lambda関数の最大ループ回数 (15分で終わらない場合、関数を何度も呼び出す)
 

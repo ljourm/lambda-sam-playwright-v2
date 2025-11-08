@@ -1,5 +1,5 @@
-import { getFileName } from "../util/fileName";
-import { PlaywrightRunnerTarget } from "../types";
+import { getFileName } from "./fileName";
+import { PlaywrightRunnerTarget } from "./types";
 
 // 戻り値の例: screenshots/example.com/20250123012345/
 export const getS3KeyPrefix = (baseUrl: string, timestamp: string): string => {

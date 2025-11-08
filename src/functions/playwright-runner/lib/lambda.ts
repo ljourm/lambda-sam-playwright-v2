@@ -1,5 +1,5 @@
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
-import { PlaywrightRunnerEvent } from "../types";
+import { PlaywrightRunnerEvent } from "./types";
 
 export const callNextLambda = async (payload: PlaywrightRunnerEvent): Promise<void> => {
   const lambdaClient = new LambdaClient({});
