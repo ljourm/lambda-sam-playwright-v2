@@ -35,6 +35,8 @@
     "esbuild": "^0.25.12",
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.6.2",
     "tsx": "^4.20.6",
