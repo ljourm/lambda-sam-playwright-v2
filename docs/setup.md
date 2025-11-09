@@ -68,3 +68,21 @@ sam local start-api --parameter-overrides $(cat .env.local)
 ```sh
 curl http://127.0.0.1:3000/api/healthcheck
 ```
+
+### Playwright Runnerのローカルテスト
+
+Docker外で簡易的にテストすることを目的に、テストランナーを用意している。
+
+#### 事前準備
+
+```sh
+# Playwrightや必要なライブラリをインストール
+npx playwright install --with-deps
+```
+
+#### 実行
+
+```sh
+pnpm tsx ./src/functions/playwright-runner/test-runner.ts
+# -> output-snapshotsにスナップショット画像が出力される
+```

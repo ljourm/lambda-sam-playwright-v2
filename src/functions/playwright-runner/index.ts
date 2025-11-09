@@ -18,11 +18,12 @@ export const handler = async (event: PlaywrightRunnerEvent, context: Context): P
   const { baseUrl, timestamp, targets, loopCount = 0 } = event;
 
   const env = getSafeEnv("ENV");
-  console.log("ENV:", env);
+  const withoutDocker = getSafeEnv("WITHOUT_DOCKER");
+  console.log("ENV:", env, "WITHOUT_DOCKER:", withoutDocker);
 
   const browser = await playwright.launch({
-    args: chromium.args,
-    executablePath: await chromium.executablePath(),
+    args: withoutDocker ? undefined : chromium.args,
+    executablePath: withoutDocker ? undefined : await chromium.executablePath(),
   });
   const s3KeyPrefix = getS3KeyPrefix(baseUrl, timestamp);
 
