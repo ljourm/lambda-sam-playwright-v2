@@ -26,7 +26,7 @@ export const run = async (
     const buffers = await snapshots(page, baseUrl, target);
 
     buffers.forEach(async (buffer, index) => {
-      const s3Key = getS3Key(s3KeyPrefix, target, buffers.length === 1 ? undefined : index);
+      const s3Key = getS3Key(s3KeyPrefix, target, buffers.length === 1 ? undefined : index + 1);
 
       if (["stg", "prd"].includes(env)) {
         await uploadToS3(s3Key, buffer);
