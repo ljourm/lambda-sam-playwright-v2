@@ -1,7 +1,7 @@
 import { Page } from "playwright-core";
 
-import { SNAPSHOT_TIMEOUT_MS, VIEWPORT_HEIGHT } from "./const";
-import { PlaywrightRunnerTarget } from "./types";
+import { VIEWPORT_HEIGHT } from "../const";
+import { PlaywrightRunnerTarget } from "../types";
 
 const isSuccessfulStatus = (status?: number): boolean => {
   if (!status) return false;
@@ -19,7 +19,7 @@ export const snapshots = async (
   const url = baseUrl.replace(/\/$/, "") + target.path;
 
   await page.setViewportSize({ width: target.width, height: VIEWPORT_HEIGHT });
-  const response = await page.goto(url, { waitUntil: "networkidle" });
+  const response = await page.goto(url);
 
   // スクロールしてLazy Load対策 (最下部までスクロールして1秒待機)
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));

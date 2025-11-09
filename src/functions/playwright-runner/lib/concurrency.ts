@@ -32,7 +32,5 @@ export const processConcurrent = async <T>(
   }
 
   // 未処理のアイテムを返す
-  return {
-    remaining: items.slice(index),
-  };
+  return items.slice(index);
 };

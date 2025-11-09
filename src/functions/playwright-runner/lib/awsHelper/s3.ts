@@ -1,6 +1,6 @@
 import { S3Client, PutObjectCommand, PutObjectCommandInput } from "@aws-sdk/client-s3";
 
-import { getSafeEnv } from "./env";
+import { getSafeEnv } from "../env";
 
 const s3 = new S3Client({});
 

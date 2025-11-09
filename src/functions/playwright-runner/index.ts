@@ -1,77 +1,17 @@
-import chromium from "@sparticuz/chromium";
 import { Context } from "aws-lambda";
-import { chromium as playwright } from "playwright-core";
 
-import { processConcurrent } from "./lib/concurrency";
 import { getSafeEnv } from "./lib/env";
-import { saveToFile } from "./lib/file";
-import { getS3Key, getS3KeyPrefix } from "./lib/fileName";
-import { callNextLambda } from "./lib/lambda";
-import { uploadToS3 } from "./lib/s3";
-import { snapshots } from "./lib/snapshot";
-import { PlaywrightRunnerEvent, PlaywrightRunnerTarget } from "./lib/types";
-
-const MAX_LOOP_COUNT = 5; // Lambda関数の最大ループ回数 (15分で終わらない場合、関数を何度も呼び出す)
+import { run } from "./lib/runner";
+import { PlaywrightRunnerEvent } from "./lib/types";
 
 export const handler = async (event: PlaywrightRunnerEvent, context: Context): Promise<string> => {
   console.log("PlaywrightRunner started with event:", JSON.stringify(event));
-  const { baseUrl, timestamp, targets, loopCount = 0 } = event;
 
   const env = getSafeEnv("ENV");
   const withoutDocker = getSafeEnv("WITHOUT_DOCKER");
-  console.log("ENV:", env, "WITHOUT_DOCKER:", withoutDocker);
+  console.log(`ENV: ${env}, WITHOUT_DOCKER: ${withoutDocker}`);
 
-  const browser = await playwright.launch({
-    args: withoutDocker ? undefined : chromium.args,
-    executablePath: withoutDocker ? undefined : await chromium.executablePath(),
-  });
-  const s3KeyPrefix = getS3KeyPrefix(baseUrl, timestamp);
-
-  const snapshotAndSave = async (target: PlaywrightRunnerTarget) => {
-    const page = await browser.newPage();
-    const buffer = await snapshots(page, baseUrl, target);
-    const s3Key = getS3Key(s3KeyPrefix, target);
-
-    if (env === "local") {
-      await saveToFile(s3Key, buffer);
-    } else {
-      await uploadToS3(s3Key, buffer);
-    }
-
-    await page.close();
-  };
-
-  const doContinue = () => {
-    return context.getRemainingTimeInMillis() > 1000 * 60; // 60秒以上残っている場合に続行
-  };
-
-  const nextTargets = await processConcurrent(snapshotAndSave, targets, doContinue);
-
-  await browser.close();
-
-  // 未処理のターゲットがある場合は次のLambda呼び出しをトリガー
-  if (nextTargets.remaining.length > 0) {
-    console.log(
-      `Remaining targets: ${nextTargets.remaining.length}. Current Loop count: ${loopCount}`,
-    );
-
-    const nextLoopCount = loopCount + 1;
-
-    if (nextLoopCount >= MAX_LOOP_COUNT) {
-      throw new Error("Maximum loop count reached.");
-    }
-
-    console.log(`Triggering next Lambda invocation`);
-
-    await callNextLambda({
-      baseUrl,
-      timestamp,
-      targets: nextTargets.remaining,
-      loopCount: nextLoopCount,
-    });
-  } else {
-    console.log("All targets processed.");
-  }
+  await run(event, context);
 
   console.log("PlaywrightRunner completed successfully.");
 
