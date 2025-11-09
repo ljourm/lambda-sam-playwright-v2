@@ -216,6 +216,27 @@ Resources:
           # CloudFront標準オリジンリクエストポリシーID: CORS-S3Origin
           # https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-cors-s3
           OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf
+        CacheBehaviors:
+          - PathPattern: /api/*
+            TargetOriginId: ApiGatewayOrigin
+            ViewerProtocolPolicy: redirect-to-https
+            AllowedMethods:
+              - GET
+              - HEAD
+              - OPTIONS
+              - PUT
+              - POST
+              - PATCH
+              - DELETE
+            CachedMethods:
+              - GET
+              - HEAD
+            # CloudFront標準キャッシュポリシーID: CachingDisabled
+            # https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policy-caching-disabled
+            CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad
+            # CloudFront標準オリジンリクエストポリシーID: AllViewerExceptHostHeader
+            # https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-all-viewer-except-host-header
+            OriginRequestPolicyId: b689b0a8-53d0-40ab-baf2-68738e2966ac
         PriceClass: PriceClass_200
         DefaultRootObject: index.html
         Enabled: true
@@ -225,6 +246,10 @@ Resources:
             OriginAccessControlId: !GetAtt S3SnapshotBucketOriginAccessControl.Id
             S3OriginConfig:
               OriginAccessIdentity: ""
+          - DomainName: !Sub "${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com"
+            Id: ApiGatewayOrigin
+            CustomOriginConfig:
+              OriginProtocolPolicy: https-only
   S3SnapshotBucketOriginAccessControl:
     Type: AWS::CloudFront::OriginAccessControl
     Properties:
