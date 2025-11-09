@@ -160,6 +160,7 @@ Resources:
       RetentionInDays: 90
   # ---- Playwright Runner Function end ----
 
+  # ---- S3 Bucket for Snapshot start ----
   S3SnapshotBucket:
     Type: AWS::S3::Bucket
     Properties:
@@ -173,6 +174,66 @@ Resources:
         Rules:
           - Status: Enabled
             ExpirationInDays: 90
+  S3SnapshotBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref S3SnapshotBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Principal:
+              Service: cloudfront.amazonaws.com
+            Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource:
+              - !Sub ${S3SnapshotBucket.Arn}/*
+            Condition:
+              StringEquals:
+                AWS:SourceArn:
+                  - !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontSnapshotDistribution}
+  # ---- S3 Bucket for Snapshot end ----
+
+  # ---- CloudFront Distribution for Snapshot start ----
+  CloudFrontSnapshotDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Comment: Snapshot distribution with API Gateway
+        DefaultCacheBehavior:
+          TargetOriginId: S3SnapshotBucketOrigin
+          Compress: true
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods:
+            - GET
+            - HEAD
+          CachedMethods:
+            - GET
+            - HEAD
+          # CloudFront標準キャッシュポリシーID: CachingOptimized
+          # https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-caching-optimized
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6
+          # CloudFront標準オリジンリクエストポリシーID: CORS-S3Origin
+          # https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-cors-s3
+          OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf
+        PriceClass: PriceClass_200
+        DefaultRootObject: index.html
+        Enabled: true
+        Origins:
+          - DomainName: !GetAtt S3SnapshotBucket.RegionalDomainName
+            Id: S3SnapshotBucketOrigin
+            OriginAccessControlId: !GetAtt S3SnapshotBucketOriginAccessControl.Id
+            S3OriginConfig:
+              OriginAccessIdentity: ""
+  S3SnapshotBucketOriginAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        SigningBehavior: always
+        OriginAccessControlOriginType: s3
+        SigningProtocol: sigv4
+        Name: !Sub ${AWS::StackName}-OAC-${AWS::AccountId}
+  # ---- CloudFront Distribution for Snapshot end ----
 
 Outputs:
   ApiV1HealthcheckFunctionApi:
