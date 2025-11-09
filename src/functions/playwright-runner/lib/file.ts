@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 
 export const saveToFile = (key: string, buffer: Buffer) => {
-  const filePath = path.join("/tmp", key);
+  const filePath = path.join("./output-snapshots", key);
   const dir = path.dirname(filePath);
 
   fs.mkdirSync(dir, { recursive: true });

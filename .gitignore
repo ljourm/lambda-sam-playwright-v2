@@ -27,3 +27,4 @@ coverage/
 .aws-sam
 
 src/layers/font
+output-snapshots
