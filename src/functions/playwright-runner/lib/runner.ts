@@ -23,14 +23,17 @@ export const run = async (
 
   const snapshotAndSave = async (target: PlaywrightRunnerTarget) => {
     const page = await browserContext.newPage();
-    const buffer = await snapshots(page, baseUrl, target);
-    const s3Key = getS3Key(s3KeyPrefix, target);
+    const buffers = await snapshots(page, baseUrl, target);
 
-    if (["stg", "prd"].includes(env)) {
-      await uploadToS3(s3Key, buffer);
-    } else {
-      await saveToFile(s3Key, buffer);
-    }
+    buffers.forEach(async (buffer, index) => {
+      const s3Key = getS3Key(s3KeyPrefix, target, buffers.length === 1 ? undefined : index);
+
+      if (["stg", "prd"].includes(env)) {
+        await uploadToS3(s3Key, buffer);
+      } else {
+        await saveToFile(s3Key, buffer);
+      }
+    });
 
     await page.close();
   };

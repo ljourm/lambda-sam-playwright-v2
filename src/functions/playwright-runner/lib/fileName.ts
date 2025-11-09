@@ -8,10 +8,14 @@ const sanitizePath = (path: string): string => {
 // - "/" -> "index-1200.png"
 // - "/articles/" -> "articles-1200.png"
 // - "/articles/category/page/" -> "articles_category_page-1200.png"
-export const getFileName = (target: PlaywrightRunnerTarget): string => {
+export const getFileName = (target: PlaywrightRunnerTarget, num?: number): string => {
   const sanitizedPath = target.path === "/" ? "index" : sanitizePath(target.path);
 
-  return `${sanitizedPath}-${target.width}.png`;
+  if (typeof num === "number") {
+    return `${sanitizedPath}-${target.width}-${num}.png`;
+  } else {
+    return `${sanitizedPath}-${target.width}.png`;
+  }
 };
 
 // 戻り値の例: screenshots/example.com/2025-01-23-01-23-45/
@@ -22,6 +26,6 @@ export const getS3KeyPrefix = (baseUrl: string, timestamp: string): string => {
 };
 
 // 戻り値の例: screenshots/example.com/2025-01-23-01-23-45/articles_category_page-1200.png
-export const getS3Key = (prefix: string, target: PlaywrightRunnerTarget): string => {
-  return `${prefix}/${getFileName(target)}`;
+export const getS3Key = (prefix: string, target: PlaywrightRunnerTarget, num?: number): string => {
+  return `${prefix}/${getFileName(target, num)}`;
 };
