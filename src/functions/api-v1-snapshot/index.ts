@@ -52,7 +52,7 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyRe
   const payload = {
     baseUrl: body.baseUrl,
     targets: body.targets,
-    timestamp: formatInTimeZone(new Date(), "Asia/Tokyo", "yyyyMMddHHmmss"), // 日本時間（JST）
+    timestamp: formatInTimeZone(new Date(), "Asia/Tokyo", "yyyy-MM-dd-HH-mm-ss"), // 日本時間（JST）
   };
 
   if (env === "local") {
