@@ -82,7 +82,7 @@ Resources:
   ApiHealthcheckFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub "${ProjectName}-${Env}-health"
+      FunctionName: !Sub "${ProjectName}-${Env}-healthcheck"
       Description: Healthcheck function
       Events:
         Api:
@@ -175,9 +175,9 @@ Resources:
             ExpirationInDays: 90
 
 Outputs:
-  ApiV1HealthFunctionApi:
-    Description: "API Gateway URL for ApiV1HealthFunction"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/health"
+  ApiV1HealthcheckFunctionApi:
+    Description: "API Gateway URL for ApiV1HealthcheckFunction"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/healthcheck"
   ApiV1SnapshotFunctionApi:
     Description: "API Gateway URL for ApiV1SnapshotFunction"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/snapshot"
