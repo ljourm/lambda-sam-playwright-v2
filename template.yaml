@@ -248,6 +248,7 @@ Resources:
               OriginAccessIdentity: ""
           - DomainName: !Sub "${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com"
             Id: ApiGatewayOrigin
+            OriginPath: "/Prod"
             CustomOriginConfig:
               OriginProtocolPolicy: https-only
   S3SnapshotBucketOriginAccessControl:
