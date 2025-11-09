@@ -8,8 +8,7 @@ export const handler = async (event: PlaywrightRunnerEvent, context: Context): P
   console.log("PlaywrightRunner started with event:", JSON.stringify(event));
 
   const env = getSafeEnv("ENV");
-  const withoutDocker = getSafeEnv("WITHOUT_DOCKER");
-  console.log(`ENV: ${env}, WITHOUT_DOCKER: ${withoutDocker}`);
+  console.log("ENV:", env);
 
   await run(event, context);
 
