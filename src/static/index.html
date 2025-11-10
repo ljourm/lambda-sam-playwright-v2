@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ja" class="theme-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>キャプチャ撮影ツール</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css" />
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">キャプチャ取得ツール</h1>
+        <div class="tabs is-toggle is-fullwidth is-medium">
+          <ul>
+            <li id="menu-create" class="is-active"><a href="#">撮影</a></li>
+            <li id="menu-result"><a href="#">結果</a></li>
+            <li id="menu-document"><a href="#">説明</a></li>
+          </ul>
+        </div>
+        <section id="section-create" class="box">
+          <form id="snapshot-form">
+            <div class="field">
+              <label class="label">ベースURL</label>
+              <div class="field has-addons">
+                <div class="control">
+                  <span class="button is-static">https://</span>
+                </div>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="baseurl-input"
+                    placeholder="サブドメイン (例: www)"
+                    size="20"
+                    style="max-width: 16em"
+                  />
+                </div>
+                <div class="control">
+                  <div class="select">
+                    <select id="baseurl-domain">
+                      <option value="example.com">example.com</option>
+                      <option value="sample.org">sample.org</option>
+                      <option value="test.net">test.net</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <p class="help">サブドメインは省略可能です</p>
+            </div>
+            <div class="field">
+              <label class="label">幅(width)</label>
+              <div class="control">
+                <label class="checkbox mr-3">
+                  <input type="checkbox" name="width" value="1200" checked /> 1200
+                </label>
+                <label class="checkbox">
+                  <input type="checkbox" name="width" value="480" /> 480
+                </label>
+              </div>
+              <p class="help"></p>
+            </div>
+            <div class="field">
+              <label class="label">パス一覧</label>
+              <div class="control">
+                <textarea
+                  class="textarea"
+                  id="path-list"
+                  rows="5"
+                  placeholder="/&#10;/article/&#10;/medical/"
+                ></textarea>
+              </div>
+              <p class="help">1行ごとにパスを入力してください</p>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button class="button is-primary" type="submit">送信</button>
+              </div>
+            </div>
+          </form>
+        </section>
+        <section id="section-result" class="box" style="display: none">
+          <h2 class="title is-5">結果一覧</h2>
+          <div class="table-container">
+            <table class="table is-striped is-fullwidth">
+              <thead>
+                <tr>
+                  <th>名前</th>
+                  <th>メール</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>サンプル太郎</td>
+                  <td>sample@example.com</td>
+                </tr>
+                <tr>
+                  <td>テスト花子</td>
+                  <td>test@example.com</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section id="section-document" class="box" style="display: none">
+          <h2 class="title is-5">このツールについて</h2>
+          <div class="notification content">
+            <ul>
+              <li>「撮影」タブでリクエストを作成・送信できます。</li>
+              <li>「結果」タブで登録済みデータを一覧表示します。</li>
+              <li>「ドキュメント」タブでこの説明を確認できます。</li>
+              <li>本ツールは社内利用向けの簡易Webアプリです。</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </section>
+    <script src="./js/tab.js"></script>
+    <script src="./js/form.js"></script>
+  </body>
+</html>
