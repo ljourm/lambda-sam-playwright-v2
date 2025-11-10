@@ -4,6 +4,7 @@ import eslint from "@eslint/js";
 import { defineConfig } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 import importPlugin from "eslint-plugin-import";
+import globals from "globals";
 import tseslint from "typescript-eslint";
 
 const IGNORE_PATTERNS = [
@@ -46,5 +47,15 @@ export default defineConfig(
   },
   {
     ignores: IGNORE_PATTERNS,
+  },
+  {
+    files: ["src/static/js/*.js"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "script",
+      globals: {
+        ...globals.browser,
+      },
+    },
   },
 );
