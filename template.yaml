@@ -303,6 +303,12 @@ Outputs:
   ApiV1SnapshotFunctionApi:
     Description: "API Gateway URL for ApiV1SnapshotFunction"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/snapshot"
+  S3SnapshotBucketName:
+    Description: "S3 Bucket Name for Snapshot"
+    Value: !Ref S3SnapshotBucket
+  CloudFrontSnapshotDistributionId:
+    Description: "CloudFront Distribution ID for Snapshot"
+    Value: !Ref CloudFrontSnapshotDistribution
   StaticDeploymentUserAccessKeyId:
     Description: "Access Key ID for Static Deployment User"
     Value: !Ref StaticDeploymentUserAccessKey
