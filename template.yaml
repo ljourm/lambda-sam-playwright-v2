@@ -261,6 +261,41 @@ Resources:
         Name: !Sub ${AWS::StackName}-OAC-${AWS::AccountId}
   # ---- CloudFront Distribution for Snapshot end ----
 
+  # ---- Static Deployment IAM User ----
+  StaticDeploymentUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Sub "${ProjectName}-${Env}-static-deployment-user"
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectName
+        - Key: CreatedBy
+          Value: !Ref CreatedBy
+  StaticDeploymentUserAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref StaticDeploymentUser
+  StaticDeploymentUserPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: !Sub "${ProjectName}-${Env}-static-deployment-policy"
+      Users:
+        - !Ref StaticDeploymentUser
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - s3:PutObject
+            Resource:
+              - !Sub "arn:aws:s3:::${S3SnapshotBucket}/*"
+          - Effect: Allow
+            Action:
+              - cloudfront:CreateInvalidation
+            Resource:
+              - !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontSnapshotDistribution}"
+  # ---- Static Deployment IAM User end ----
+
 Outputs:
   ApiV1HealthcheckFunctionApi:
     Description: "API Gateway URL for ApiV1HealthcheckFunction"
@@ -268,3 +303,9 @@ Outputs:
   ApiV1SnapshotFunctionApi:
     Description: "API Gateway URL for ApiV1SnapshotFunction"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/snapshot"
+  StaticDeploymentUserAccessKeyId:
+    Description: "Access Key ID for Static Deployment User"
+    Value: !Ref StaticDeploymentUserAccessKey
+  StaticDeploymentUserSecretAccessKey:
+    Description: "Secret Access Key for Static Deployment User"
+    Value: !GetAtt StaticDeploymentUserAccessKey.SecretAccessKey

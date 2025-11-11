@@ -33,6 +33,6 @@ warm_containers = "EAGER"
 [stg.deploy.parameters]
 stack_name = "lambda-sam-playwright-v2"
 resolve_s3 = true
-capabilities = "CAPABILITY_IAM"
+capabilities = ["CAPABILITY_IAM", "CAPABILITY_NAMED_IAM"]
 resolve_image_repos = true
 confirm_changeset = true
