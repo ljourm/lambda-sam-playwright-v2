@@ -27,13 +27,16 @@ pnpm build
 ### デプロイ
 
 ```sh
-PROFILE_NAME=your-profile-name
+export AWS_PROFILE=${YOUR_AWS_PROFILE}
+export SAM_PARAMETER=${cat .env.stg}
 
 # STG環境にデプロイ
-sam deploy --profile ${PROFILE_NAME} --config-env stg --parameter-overrides $(cat .env.stg)
+export SAM_PARAMETER=$(cat .env.stg)
+sam deploy --config-env stg --parameter-overrides ${SAM_PARAMETER}
 
 # PRD環境にデプロイ
-sam deploy --profile ${PROFILE_NAME} --config-env prd --parameter-overrides $(cat .env.prd)
+export SAM_PARAMETER=$(cat .env.prd)
+sam deploy --config-env prd --parameter-overrides ${SAM_PARAMETER}
 ```
 
 ## デプロイ後の動作確認
