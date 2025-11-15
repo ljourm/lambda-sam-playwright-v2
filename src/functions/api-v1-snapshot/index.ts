@@ -2,10 +2,7 @@ import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import type { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
 import { formatInTimeZone } from "date-fns-tz";
 
-type RequestBody = {
-  baseUrl: string;
-  targets: { path: string; width: number }[];
-};
+import { validateRequestBody } from "./validateRequestBody.js";
 
 export const getSafeEnv = (key: string): string => {
   const value = process.env[key];
@@ -15,20 +12,6 @@ export const getSafeEnv = (key: string): string => {
   }
 
   return value;
-};
-
-// リクエストのバリデーションのためanyを許容
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const validateRequestBody = (body: any): body is RequestBody => {
-  if (typeof body !== "object" || body === null) return false;
-  if (typeof body.baseUrl !== "string") return false;
-  if (!Array.isArray(body.targets)) return false;
-  for (const target of body.targets) {
-    if (typeof target.path !== "string" || typeof target.width !== "number") {
-      return false;
-    }
-  }
-  return true;
 };
 
 export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
@@ -43,7 +26,7 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyRe
   if (!validateRequestBody(body)) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ message: "Invalid request body" }),
+      body: JSON.stringify({ message: "Invalid request body", errors: validateRequestBody.errors }),
     };
   }
 
