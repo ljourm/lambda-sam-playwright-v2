@@ -8,6 +8,7 @@ stack_name = "lambda-sam-playwright-v2"
 [default.build.parameters]
 cached = true
 parallel = true
+build_in_source = true
 
 [default.validate.parameters]
 lint = true
