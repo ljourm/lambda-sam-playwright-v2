@@ -4,7 +4,7 @@ import { formatInTimeZone } from "date-fns-tz";
 
 import { validateRequestBody } from "./validateRequestBody.js";
 
-export const getSafeEnv = (key: string): string => {
+const getSafeEnv = (key: string): string => {
   const value = process.env[key];
 
   if (!value) {
