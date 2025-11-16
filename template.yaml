@@ -20,6 +20,10 @@ Parameters:
   AllowSnapshotDomain:
     Type: String
     Default: "example.com, www.example.com"
+  ApiGatewayApiKeyValue:
+    Type: String
+    Description: "API Gatewayに直接アクセスされることを防止することを目的として、CloudFrontでヘッダーに設定し、API Gatewayの認証で使用される (20文字以上)"
+    Default: dummy-dummy-dummy-dummy
 
 # https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/sam-specification-template-anatomy-globals.html
 Globals:
@@ -44,6 +48,8 @@ Globals:
       Project: !Ref ProjectName
       CreatedBy: !Ref CreatedBy
   Api:
+    Auth:
+      ApiKeyRequired: true
     TracingEnabled: true
     # Stageの生成を無効化するために設定、OpenAPIは使用していない: https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/sam-resource-api.html#sam-api-openapiversion
     OpenApiVersion: 3.0.2
@@ -164,6 +170,30 @@ Resources:
       RetentionInDays: 90
   # ---- Playwright Runner Function end ----
 
+  # ---- API Gateway Key start ----
+  ApiGatewayApiKey:
+    Type: AWS::ApiGateway::ApiKey
+    Properties:
+      Enabled: true
+      Name: !Sub "${ProjectName}-${Env}-api-key"
+      Value: !Ref ApiGatewayApiKeyValue
+  ApiGatewayUsagePlan:
+    Type: AWS::ApiGateway::UsagePlan
+    DependsOn: [ServerlessRestApi, ServerlessRestApiProdStage]
+    Properties:
+      UsagePlanName: !Sub "${ProjectName}-${Env}-usage-plan"
+      ApiStages:
+        - ApiId: !Ref ServerlessRestApi
+          Stage: Prod
+  ApiGatewayUsagePlanKey:
+    Type: AWS::ApiGateway::UsagePlanKey
+    DependsOn: [ApiGatewayUsagePlan, ApiGatewayApiKey]
+    Properties:
+      KeyId: !Ref ApiGatewayApiKey
+      KeyType: API_KEY
+      UsagePlanId: !Ref ApiGatewayUsagePlan
+  # ---- API Gateway Key end ----
+
   # ---- S3 Bucket for Snapshot start ----
   S3SnapshotBucket:
     Type: AWS::S3::Bucket
@@ -261,6 +291,9 @@ Resources:
             OriginPath: "/Prod"
             CustomOriginConfig:
               OriginProtocolPolicy: https-only
+            OriginCustomHeaders:
+              - HeaderName: x-api-key
+                HeaderValue: !Ref ApiGatewayApiKeyValue
   S3SnapshotBucketOriginAccessControl:
     Type: AWS::CloudFront::OriginAccessControl
     Properties:
@@ -335,13 +368,7 @@ Resources:
   # ---- Static Deployment IAM User end ----
 
 Outputs:
-  ApiV1HealthcheckFunctionApi:
-    Description: "API Gateway URL for ApiV1HealthcheckFunction"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/healthcheck"
-  ApiV1SnapshotFunctionApi:
-    Description: "API Gateway URL for ApiV1SnapshotFunction"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/snapshot"
-  S3SnapshotBucketName:
+S3SnapshotBucketName:
     Description: "S3 Bucket Name for Snapshot"
     Value: !Ref S3SnapshotBucket
   CloudFrontSnapshotDistributionId:
