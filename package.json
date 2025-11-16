@@ -20,6 +20,7 @@
     "lint": "run-p lint:*",
     "lint:js": "eslint",
     "lint:fmt": "prettier --check .",
+    "lint:ts": "tsc --noEmit",
     "fix": "run-p fix:*",
     "fix:js": "eslint --fix",
     "fix:fmt": "prettier --write .",

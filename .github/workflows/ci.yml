@@ -18,3 +18,5 @@ jobs:
         run: pnpm lint:fmt
       - name: Run eslint
         run: pnpm lint:js
+      - name: Run tsc
+        run: pnpm lint:ts
