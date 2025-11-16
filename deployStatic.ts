@@ -12,12 +12,10 @@ import { glob } from "glob";
 const accessKeyId: string = process.env.S3_ACCESS_KEY_ID!;
 const secretAccessKey: string = process.env.S3_SECRET_ACCESS_KEY!;
 
+const credentials = accessKeyId && secretAccessKey ? { accessKeyId, secretAccessKey } : undefined;
 const awsClientParams = {
   region: "ap-northeast-1",
-  credentials: {
-    accessKeyId,
-    secretAccessKey,
-  },
+  credentials,
 };
 
 const s3Client = new S3Client(awsClientParams);
