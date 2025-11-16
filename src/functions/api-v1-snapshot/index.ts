@@ -56,6 +56,6 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
   return {
     statusCode: 201,
-    body: JSON.stringify({ message: "created" }),
+    body: JSON.stringify({ message: "created", timestamp: payload.timestamp }),
   };
 };

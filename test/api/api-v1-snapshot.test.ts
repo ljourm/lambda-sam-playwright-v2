@@ -12,7 +12,8 @@ describe("api-v1-snapshot", () => {
         targets: [{ path: "/foo", width: 1200 }],
       });
     expect(res.status).toBe(201);
-    expect(res.body).toEqual({ message: "created" });
+    expect(res.body.message).toEqual("created");
+    expect(res.body.timestamp).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}/); // yyyy-MM-dd-HH-mm-ss (フォーマットだけ確認する)
   });
 
   it("400", async () => {
