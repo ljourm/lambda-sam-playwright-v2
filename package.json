@@ -25,7 +25,8 @@
     "fix:fmt": "prettier --write .",
     "build": "pnpm run build:ts && pnpm run build:sam",
     "build:ts": "pnpm tsx build.ts",
-    "build:sam": "sam build"
+    "build:sam": "sam build",
+    "test": "vitest"
   },
   "dependencies": {
     "@aws-sdk/client-lambda": "^3.927.0",
@@ -41,6 +42,7 @@
     "@sparticuz/chromium": "^141.0.0",
     "@types/aws-lambda": "^8.10.156",
     "@types/node": "^24.9.1",
+    "@types/supertest": "^6.0.3",
     "esbuild": "^0.25.12",
     "eslint": "^9.38.0",
     "eslint-config-prettier": "^10.1.8",
@@ -50,8 +52,10 @@
     "globals": "^16.5.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.6.2",
+    "supertest": "^7.1.4",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.46.2"
+    "typescript-eslint": "^8.46.2",
+    "vitest": "^4.0.9"
   }
 }
