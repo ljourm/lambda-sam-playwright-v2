@@ -61,13 +61,9 @@ const uploadFile = async (bucketName: string, key: string, filename: string): Pr
   console.log("uploaded", bucketName, key, contentType);
 };
 
-const uploadFiles = async (
-  bucketName: string,
-  keyPrefix: string,
-  filenames: string[],
-): Promise<void> => {
+const uploadFiles = async (bucketName: string, filenames: string[]): Promise<void> => {
   const uploadPromises = filenames.map(async (filename) => {
-    const key = `${keyPrefix}/${filename}`;
+    const key = filename;
     await uploadFile(bucketName, key, filename);
   });
 
@@ -89,12 +85,7 @@ const invalidate = async (distributionId: string) => {
   console.log("create invalidation", distributionId, paths);
 };
 
-const deployStatic = async (
-  bucketName: string,
-  keyPrefix: string,
-  distDir: string,
-  distributionId: string,
-) => {
+const deployStatic = async (bucketName: string, distDir: string, distributionId: string) => {
   try {
     process.chdir(distDir);
 
@@ -105,8 +96,8 @@ const deployStatic = async (
     const htmlFilenames = filenames.filter((filename) => path.extname(filename) === ".html");
 
     // S3にアップロード
-    await uploadFiles(bucketName, keyPrefix, otherFilenames);
-    await uploadFiles(bucketName, keyPrefix, htmlFilenames);
+    await uploadFiles(bucketName, otherFilenames);
+    await uploadFiles(bucketName, htmlFilenames);
 
     // CloudFrontのキャッシュを削除
     await invalidate(distributionId);
@@ -116,13 +107,12 @@ const deployStatic = async (
 };
 
 const args = process.argv;
-if (args.length !== 6) {
-  console.log("Usage: pnpm tsx deployStatic <bucketName> <keyPrefix> <distDir> <distributionId>");
+if (args.length !== 5) {
+  console.log("Usage: pnpm tsx deployStatic <bucketName> <distDir> <distributionId>");
   process.exit(1);
 }
 const bucketName = args[2];
-const keyPrefix = args[3];
-const distDir = args[4];
-const distributionId = args[5];
+const distDir = args[3];
+const distributionId = args[4];
 
-await deployStatic(bucketName, keyPrefix, distDir, distributionId);
+await deployStatic(bucketName, distDir, distributionId);
