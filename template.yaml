@@ -220,6 +220,9 @@ Resources:
           # CloudFront標準オリジンリクエストポリシーID: CORS-S3Origin
           # https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-cors-s3
           OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf
+          FunctionAssociations:
+            - EventType: viewer-request
+              FunctionARN: !GetAtt CloudFrontFunctionRequestAllowSpecificIP.FunctionARN
         CacheBehaviors:
           - PathPattern: /api/*
             TargetOriginId: ApiGatewayOrigin
@@ -241,6 +244,9 @@ Resources:
             # CloudFront標準オリジンリクエストポリシーID: AllViewerExceptHostHeader
             # https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-all-viewer-except-host-header
             OriginRequestPolicyId: b689b0a8-53d0-40ab-baf2-68738e2966ac
+            FunctionAssociations:
+              - EventType: viewer-request
+                FunctionARN: !GetAtt CloudFrontFunctionRequestAllowSpecificIP.FunctionARN
         PriceClass: PriceClass_200
         DefaultRootObject: index.html
         Enabled: true
@@ -265,6 +271,34 @@ Resources:
         Name: !Sub ${AWS::StackName}-OAC-${AWS::AccountId}
   # ---- CloudFront Distribution for Snapshot end ----
 
+  # ---- CloudFront Function to Allow Specific IPs ----
+  CloudFrontFunctionRequestAllowSpecificIP:
+    Type: AWS::CloudFront::Function
+    Properties:
+      Name: AllowSpecificIPFunction
+      AutoPublish: true
+      FunctionConfig:
+        Comment: Function to allow specific IPs
+        Runtime: cloudfront-js-1.0
+      FunctionCode: |
+        function handler(event) {
+          var allowedIps = [
+            "192.168.1.1", // 許可IP
+          ];
+          var clientIp = event.request.clientIp;
+          if (allowedIps.indexOf(clientIp) === -1) {
+            return {
+              statusCode: 403,
+              statusDescription: "Forbidden",
+              headers: {
+                "content-type": { value: "text/plain" }
+              },
+              body: "Access denied"
+            };
+          }
+          return event.request;
+        }
+  # ---- CloudFront Function to Allow Specific IPs end ----
   # ---- Static Deployment IAM User ----
   StaticDeploymentUser:
     Type: AWS::IAM::User
