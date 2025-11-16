@@ -368,12 +368,12 @@ Resources:
   # ---- Static Deployment IAM User end ----
 
 Outputs:
-S3SnapshotBucketName:
-    Description: "S3 Bucket Name for Snapshot"
-    Value: !Ref S3SnapshotBucket
   CloudFrontSnapshotDistributionId:
     Description: "CloudFront Distribution ID for Snapshot"
     Value: !Ref CloudFrontSnapshotDistribution
+  S3SnapshotBucketName:
+    Description: "S3 Bucket Name for Snapshot"
+    Value: !Ref S3SnapshotBucket
   StaticDeploymentUserAccessKeyId:
     Description: "Access Key ID for Static Deployment User"
     Value: !Ref StaticDeploymentUserAccessKey
