@@ -19,6 +19,7 @@ Parameters:
       - local
   AllowSnapshotDomain:
     Type: String
+    Description: "スナップショット取得を許可するドメイン (カンマ区切りで複数指定可能)"
     Default: "example.com, www.example.com"
   ApiGatewayApiKeyValue:
     Type: String
