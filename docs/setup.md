@@ -69,6 +69,16 @@ sam local start-api --parameter-overrides $(cat .env.local)
 curl http://127.0.0.1:3000/api/healthcheck
 ```
 
+### Vitestによる自動テスト
+
+```sh
+# APIが実行可能なようにしておく
+sam local start-api --parameter-overrides $(cat .env.local)
+
+# テスト実行
+pnpm test
+```
+
 ### Playwright Runnerのローカルテスト
 
 Docker外で簡易的にテストすることを目的に、テストランナーを用意している。
