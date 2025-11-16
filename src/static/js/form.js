@@ -17,6 +17,10 @@ const sendSnapshotRequest = async (requestBody) => {
   alert("送信しました");
 };
 
+const fetchCompanyPaths = async () => {
+  alert("未実装");
+};
+
 /**
  * @param {SubmitEvent} e
  */
@@ -28,8 +32,9 @@ const handleFormSubmit = async (e) => {
     const subdomainEl = document.getElementById("baseurl-input");
     const domainEl = document.getElementById("baseurl-domain");
     const pathListEl = document.getElementById("path-list");
+    const companyCodeEl = document.getElementById("company-code");
 
-    if (!form || !subdomainEl || !domainEl || !pathListEl) {
+    if (!form || !subdomainEl || !domainEl || !pathListEl || !companyCodeEl) {
       // ここが実行される場合、HTMLとJSの不整合が考えられる。
       throw new Error("要素の取得に失敗しました。");
     }
@@ -78,5 +83,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (form) {
     form.addEventListener("submit", handleFormSubmit);
+  }
+
+  const fetchPathListButton = document.getElementById("fetch-path-list");
+  if (fetchPathListButton) {
+    fetchPathListButton.addEventListener("click", fetchCompanyPaths);
   }
 });

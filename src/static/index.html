@@ -48,17 +48,41 @@
               </div>
               <p class="help">サブドメインは省略可能です</p>
             </div>
-            <div class="field">
-              <label class="label">幅(width)</label>
-              <div class="control">
-                <label class="checkbox mr-3">
-                  <input type="checkbox" name="width" value="1200" checked /> 1200
-                </label>
-                <label class="checkbox">
-                  <input type="checkbox" name="width" value="480" /> 480
-                </label>
+            <div class="field is-horizontal">
+              <div class="field mr-6">
+                <label class="label">幅(width)</label>
+                <div class="control">
+                  <label class="checkbox mr-3">
+                    <input type="checkbox" name="width" value="1200" checked /> 1200px
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" name="width" value="480" /> 480px
+                  </label>
+                </div>
+                <p class="help"></p>
               </div>
-              <p class="help"></p>
+              <div class="field">
+                <label class="label" for="company-code" style="margin-bottom: 0">
+                  会社コード
+                </label>
+                <div class="field is-grouped">
+                  <div class="control">
+                    <input
+                      class="input"
+                      type="text"
+                      id="company-code"
+                      placeholder="会社コード"
+                      style="max-width: 8em"
+                    />
+                  </div>
+                  <div class="control">
+                    <button class="button is-info" type="button" id="fetch-path-list">
+                      会社コードからパス一覧を取得
+                    </button>
+                  </div>
+                </div>
+                <p class="help">会社コードを入力すると、その会社だけの表示に切り替わります</p>
+              </div>
             </div>
             <div class="field">
               <label class="label">パス一覧</label>
