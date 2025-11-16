@@ -48,6 +48,7 @@ Globals:
     Tags:
       Project: !Ref ProjectName
       CreatedBy: !Ref CreatedBy
+      Env: !Ref Env
   Api:
     Auth:
       ApiKeyRequired: true
@@ -200,11 +201,6 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: !Sub "${ProjectName}-${Env}-snapshot"
-      Tags:
-        - Key: Project
-          Value: !Ref ProjectName
-        - Key: CreatedBy
-          Value: !Ref CreatedBy
       LifecycleConfiguration:
         Rules:
           - Status: Enabled
@@ -338,11 +334,6 @@ Resources:
     Type: AWS::IAM::User
     Properties:
       UserName: !Sub "${ProjectName}-${Env}-static-deployment-user"
-      Tags:
-        - Key: Project
-          Value: !Ref ProjectName
-        - Key: CreatedBy
-          Value: !Ref CreatedBy
   StaticDeploymentUserAccessKey:
     Type: AWS::IAM::AccessKey
     Properties:

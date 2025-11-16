@@ -33,6 +33,11 @@ resolve_s3 = true
 capabilities = ["CAPABILITY_IAM", "CAPABILITY_NAMED_IAM"]
 resolve_image_repos = true
 confirm_changeset = true
+tags = [ # AWS SAMで直接サポートされていないリソースにはここでCloudFormation経由でタグ設定する必要がある
+  "Project=lambda-sam-playwright-v2",
+  "CreatedBy=sam-cli",
+  "Env=stg",
+]
 parameter_overrides = [
   "Env=stg",
 ]
@@ -43,6 +48,11 @@ resolve_s3 = true
 capabilities = ["CAPABILITY_IAM", "CAPABILITY_NAMED_IAM"]
 resolve_image_repos = true
 confirm_changeset = true
+tags = [
+  "Project=lambda-sam-playwright-v2",
+  "CreatedBy=sam-cli",
+  "Env=prd",
+]
 parameter_overrides = [
   "Env=prd",
 ]
