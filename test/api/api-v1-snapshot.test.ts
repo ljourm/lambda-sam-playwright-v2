@@ -19,18 +19,23 @@ describe("api-v1-snapshot", () => {
     const res = await request(localUrl).post("/api/v1/snapshot").send({ invalid: true });
     expect(res.status).toBe(400);
     expect(res.body).toEqual({
-      errors: [
-        {
-          instancePath: "",
-          keyword: "required",
-          message: "must have required property 'baseUrl'",
-          params: {
-            missingProperty: "baseUrl",
-          },
-          schemaPath: "#/required",
-        },
-      ],
       message: "Invalid request body",
+      errors: [
+        "must have required property 'baseUrl'",
+        "must have required property 'targets'",
+        "must NOT have additional properties",
+      ],
+    });
+  });
+
+  it("400", async () => {
+    const res = await request(localUrl)
+      .post("/api/v1/snapshot")
+      .send({ baseUrl: "https://example.com" });
+    expect(res.status).toBe(400);
+    expect(res.body).toEqual({
+      message: "Invalid request body",
+      errors: ["must have required property 'targets'"],
     });
   });
 });

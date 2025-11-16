@@ -1,6 +1,6 @@
 import Ajv from "ajv";
 
-const ajv = new Ajv.default();
+const ajv = new Ajv.default({ allErrors: true });
 
 const requestBodySchema = {
   type: "object",

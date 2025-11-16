@@ -26,7 +26,10 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyRe
   if (!validateRequestBody(body)) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ message: "Invalid request body", errors: validateRequestBody.errors }),
+      body: JSON.stringify({
+        message: "Invalid request body",
+        errors: validateRequestBody.errors?.map((error) => error.message),
+      }),
     };
   }
 
