@@ -363,6 +363,9 @@ Outputs:
   CloudFrontSnapshotDistributionId:
     Description: "CloudFront Distribution ID for Snapshot"
     Value: !Ref CloudFrontSnapshotDistribution
+  CloudFrontSnapshotDistributionDomainName:
+    Description: "CloudFront Distribution Domain Name for Snapshot"
+    Value: !GetAtt CloudFrontSnapshotDistribution.DomainName
   S3SnapshotBucketName:
     Description: "S3 Bucket Name for Snapshot"
     Value: !Ref S3SnapshotBucket
