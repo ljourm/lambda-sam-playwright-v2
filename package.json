@@ -24,6 +24,8 @@
     "fix:js": "eslint --fix",
     "fix:fmt": "prettier --write .",
     "build": "sam build",
+    "deploy:stg:sam": "sam deploy --config-env stg",
+    "deploy:prd:sam": "sam deploy --config-env prd",
     "test": "vitest"
   },
   "dependencies": {

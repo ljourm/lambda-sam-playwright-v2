@@ -54,15 +54,15 @@ sam build
 ### 単体関数のローカル実行
 
 ```sh
-sam local invoke ApiHealthcheckFunction --parameter-overrides $(cat .env.local)
-sam local invoke ApiV1SnapshotFunction --parameter-overrides $(cat .env.local) --event events/api-v1-snapshot/base.json
-sam local invoke PlaywrightRunnerFunction --parameter-overrides $(cat .env.local) --event events/playwright-runner/base.json
+sam local invoke ApiHealthcheckFunction
+sam local invoke ApiV1SnapshotFunction --event events/api-v1-snapshot/base.json
+sam local invoke PlaywrightRunnerFunction --event events/playwright-runner/base.json
 ```
 
 ### API Gatewayエミュレーション
 
 ```sh
-sam local start-api --parameter-overrides $(cat .env.local)
+sam local start-api
 ```
 
 ```sh
@@ -73,7 +73,7 @@ curl http://127.0.0.1:3000/api/healthcheck
 
 ```sh
 # APIが実行可能なようにしておく
-sam local start-api --parameter-overrides $(cat .env.local)
+sam local start-api
 
 # テスト実行
 pnpm test

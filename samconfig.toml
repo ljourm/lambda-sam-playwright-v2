@@ -3,7 +3,9 @@
 version = 0.1
 
 [default.global.parameters]
-stack_name = "lambda-sam-playwright-v2"
+parameter_overrides = [
+  "Env=local",
+]
 
 [default.build.parameters]
 cached = true
@@ -12,12 +14,6 @@ build_in_source = true
 
 [default.validate.parameters]
 lint = true
-
-[default.deploy.parameters]
-s3_prefix = "lambda-sam-playwright-v2"
-region = "ap-northeast-1"
-capabilities = "CAPABILITY_IAM"
-confirm_changeset = true
 
 [default.package.parameters]
 resolve_s3 = true
@@ -32,8 +28,21 @@ warm_containers = "EAGER"
 warm_containers = "EAGER"
 
 [stg.deploy.parameters]
-stack_name = "lambda-sam-playwright-v2"
+stack_name = "lambda-sam-playwright-v2-stg"
 resolve_s3 = true
 capabilities = ["CAPABILITY_IAM", "CAPABILITY_NAMED_IAM"]
 resolve_image_repos = true
 confirm_changeset = true
+parameter_overrides = [
+  "Env=stg",
+]
+
+[prd.deploy.parameters]
+stack_name = "lambda-sam-playwright-v2-prd"
+resolve_s3 = true
+capabilities = ["CAPABILITY_IAM", "CAPABILITY_NAMED_IAM"]
+resolve_image_repos = true
+confirm_changeset = true
+parameter_overrides = [
+  "Env=prd",
+]

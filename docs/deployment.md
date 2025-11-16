@@ -6,18 +6,6 @@
 
 ## 手順
 
-### 環境変数の整備
-
-```sh
-# STG環境のパラメータを編集
-cp .env.sample .env.stg
-# -> .env.stgを修正
-
-# PRD環境のパラメータを編集
-cp .env.sample .env.prd
-# -> .env.prdを修正
-```
-
 ### ビルド
 
 ```sh
@@ -28,15 +16,12 @@ pnpm build
 
 ```sh
 export AWS_PROFILE=${YOUR_AWS_PROFILE}
-export SAM_PARAMETER=${cat .env.stg}
 
 # STG環境にデプロイ
-export SAM_PARAMETER=$(cat .env.stg)
-sam deploy --config-env stg --parameter-overrides ${SAM_PARAMETER}
+sam deploy --config-env stg
 
 # PRD環境にデプロイ
-export SAM_PARAMETER=$(cat .env.prd)
-sam deploy --config-env prd --parameter-overrides ${SAM_PARAMETER}
+sam deploy --config-env prd
 ```
 
 ## デプロイ後の動作確認
