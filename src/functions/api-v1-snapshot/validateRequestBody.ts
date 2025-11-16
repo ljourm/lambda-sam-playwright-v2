@@ -13,6 +13,8 @@ const requestBodySchema = {
         properties: {
           path: { type: "string" },
           width: { type: "number" },
+          fullPage: { type: "boolean" },
+          beforeEvaluate: { type: "string" },
         },
         required: ["path", "width"],
         additionalProperties: false,

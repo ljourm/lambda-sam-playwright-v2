@@ -38,6 +38,8 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyRe
   const payload = {
     baseUrl: body.baseUrl,
     targets: body.targets,
+    fullPage: body.fullPage,
+    beforeEvaluate: body.beforeEvaluate,
     timestamp: formatInTimeZone(new Date(), "Asia/Tokyo", "yyyy-MM-dd-HH-mm-ss"), // 日本時間（JST）
   };
 
