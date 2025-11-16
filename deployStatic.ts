@@ -117,7 +117,7 @@ const deployStatic = async (
 
 const args = process.argv;
 if (args.length !== 6) {
-  console.log("Usage: tsx deployStatic <bucketName> <keyPrefix> <distDir> <distributionId>");
+  console.log("Usage: pnpm tsx deployStatic <bucketName> <keyPrefix> <distDir> <distributionId>");
   process.exit(1);
 }
 const bucketName = args[2];
