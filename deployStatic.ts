@@ -46,12 +46,14 @@ const uploadFile = async (bucketName: string, key: string, filename: string): Pr
   });
 
   const contentType = contentTypes[path.extname(filename)];
+  const cacheControl = contentType === "text/html" ? "no-cache,must-revalidate" : "max-age=2592000";
 
   const params = {
     Bucket: bucketName,
     Key: key,
     Body: fileStream,
     ContentType: `${contentType}; ${charset}`,
+    CacheControl: cacheControl,
   };
   const command = new PutObjectCommand(params);
   await s3Client.send(command);
