@@ -1,19 +1,23 @@
-import { globSync } from "node:fs";
+// 実行例
+// pnpm tsx build ./src/functions/dummy/index.ts ./dist/functions/dummy/index.mjs
 
 import { build } from "esbuild";
 
-const entryPoints = globSync("./src/functions/*/index.ts");
+if (process.argv.length !== 4) {
+  console.error("Usage: pnpm tsx build <entryPoint> <outfile>");
+  process.exit(1);
+}
 
-console.log("Building entry points:", entryPoints);
+const [, , entryPoint, outfile] = process.argv;
 
-build({
-  entryPoints,
-  outdir: "dist/functions",
-  outbase: "./src/functions",
+console.log(`Building: ${entryPoint} → ${outfile}`);
+
+await build({
+  entryPoints: [entryPoint],
+  outfile,
   platform: "node",
   target: "node22",
   format: "esm",
-  outExtension: { ".js": ".mjs" },
   bundle: true,
   sourcemap: true,
   minify: false,
