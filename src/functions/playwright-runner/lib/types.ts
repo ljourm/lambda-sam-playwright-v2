@@ -1,6 +1,8 @@
 export type PlaywrightRunnerTarget = {
   path: string;
   width: number;
+  fullPage?: boolean;
+  beforeEvaluate?: string;
 };
 
 export type PlaywrightRunnerEvent = {

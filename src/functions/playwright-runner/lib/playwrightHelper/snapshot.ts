@@ -53,9 +53,19 @@ export const snapshots = async (
     throw new Error(`Failed to load URL: ${url}, status: ${response?.status()}`);
   }
 
-  // スクロールしてLazy Load対策 (最下部までスクロールして1秒待機)
-  await scrollEachScreen(page, await page.evaluate(() => document.documentElement.scrollHeight));
+  // beforeEvaluateが指定されていれば実行する
+  if (target.beforeEvaluate) {
+    await page.evaluate(target.beforeEvaluate);
+  }
 
-  // Chromiumのスクリーンショットには高さ制限があるため、分割して撮影する
-  return await snapshotWithClipping(page, target);
+  if (target.fullPage) {
+    // スクロールしてLazy Load対策 (最下部までスクロールして1秒待機)
+    await scrollEachScreen(page, await page.evaluate(() => document.documentElement.scrollHeight));
+
+    // Chromiumのスクリーンショットには高さ制限があるため、分割して撮影する
+    return await snapshotWithClipping(page, target);
+  } else {
+    // 通常のスクリーンショット
+    return [await page.screenshot({ fullPage: false, type: "png" })];
+  }
 };
