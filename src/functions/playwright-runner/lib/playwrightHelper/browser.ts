@@ -1,7 +1,7 @@
 import chromium from "@sparticuz/chromium";
 import { Browser, BrowserContext, chromium as playwright, Route } from "playwright-core";
 
-import { ALLOW_DOMAINS } from "../const";
+import { getSafeEnv } from "../env";
 
 // Docker環境かどうかでブラウザの起動方法を切り替ええる。Dockerの場合、@sparticuz/chromiumの環境設定を使用する。
 export const getBrowser = async (): Promise<Browser> => {
@@ -17,9 +17,11 @@ export const getBrowser = async (): Promise<Browser> => {
 
 // 指定したドメインのみ許可し、それ以外はブロックする
 const doContinueForDomain = (route: Route) => {
+  const allowSnapshotDomains = getSafeEnv("ALLOW_SNAPSHOT_DOMAIN").split(",");
+
   try {
     const hostname = new URL(route.request().url()).hostname;
-    const isAllowed = ALLOW_DOMAINS.some((domain) => hostname.endsWith(domain));
+    const isAllowed = allowSnapshotDomains.some((domain) => hostname.endsWith(domain));
 
     if (isAllowed) {
       route.continue();

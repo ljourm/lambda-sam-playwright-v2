@@ -8,7 +8,8 @@ export const handler = async (event: PlaywrightRunnerEvent, context: Context): P
   console.log("PlaywrightRunner started with event:", JSON.stringify(event));
 
   const env = getSafeEnv("ENV");
-  console.log("ENV:", env);
+  const allowSnapshotDomain = getSafeEnv("ALLOW_SNAPSHOT_DOMAIN");
+  console.log(`ENV: ${env}, ALLOW_SNAPSHOT_DOMAIN: ${allowSnapshotDomain}`);
 
   await run(event, context);
 

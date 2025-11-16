@@ -17,6 +17,9 @@ Parameters:
       - prd
       - stg
       - local
+  AllowSnapshotDomain:
+    Type: String
+    Default: "example.com, www.example.com"
 
 # https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/sam-specification-template-anatomy-globals.html
 Globals:
@@ -144,6 +147,7 @@ Resources:
       Environment:
         Variables:
           S3_DEST_BUCKET_NAME: !Sub "${ProjectName}-${Env}-snapshot"
+          ALLOW_SNAPSHOT_DOMAIN: !Ref AllowSnapshotDomain
       Policies:
         - Version: "2012-10-17"
           Statement:

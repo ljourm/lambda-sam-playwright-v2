@@ -7,6 +7,7 @@ import { handler } from "./";
 
 process.env.ENV = "local";
 process.env.WITHOUT_DOCKER = "true";
+process.env.ALLOW_SNAPSHOT_DOMAIN = "example.com,example.org";
 
 const event: PlaywrightRunnerEvent = {
   timestamp: formatInTimeZone(new Date(), "Asia/Tokyo", "yyyy-MM-dd-HH-mm-ss"),
