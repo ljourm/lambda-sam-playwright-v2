@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-export const saveToFile = (key: string, buffer: Buffer) => {
+export const saveToLocalFile = (key: string, buffer: Buffer) => {
   const filePath = path.join("./output-snapshots", key);
   const dir = path.dirname(filePath);
 

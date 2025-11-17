@@ -1,15 +1,20 @@
 import { Context } from "aws-lambda";
 
 import { callNextLambda } from "./awsHelper/lambda";
-import { uploadToS3 } from "./awsHelper/s3";
 import { processConcurrent } from "./concurrency";
 import { MAX_LAMBDA_LOOP_COUNT } from "./const";
 import { getSafeEnv } from "./env";
-import { saveToFile } from "./file";
-import { getS3Key, getS3KeyPrefix } from "./fileName";
+import { getS3IndexKey, getS3InfoKey, getS3Key, getS3KeyPrefix } from "./fileName";
 import { getBrowser, getBrowserContext } from "./playwrightHelper/browser";
 import { snapshots } from "./playwrightHelper/snapshot";
-import { PlaywrightRunnerEvent, PlaywrightRunnerTarget } from "./types";
+import { loadJson, saveFile } from "./stream";
+import {
+  PlaywrightRunnerEvent,
+  PlaywrightRunnerIndex,
+  PlaywrightRunnerResult,
+  PlaywrightRunnerResultTargets,
+  PlaywrightRunnerTarget,
+} from "./types";
 
 export const run = async (
   { baseUrl, timestamp, targets, loopCount = 0 }: PlaywrightRunnerEvent,
@@ -21,19 +26,21 @@ export const run = async (
   const browser = await getBrowser();
   const browserContext = await getBrowserContext(browser);
 
+  const resultTargets: PlaywrightRunnerResultTargets = [];
+
   const snapshotAndSave = async (target: PlaywrightRunnerTarget) => {
     const page = await browserContext.newPage();
     const buffers = await snapshots(page, baseUrl, target);
+    const keys: string[] = [];
 
     buffers.forEach(async (buffer, index) => {
       const s3Key = getS3Key(s3KeyPrefix, target, buffers.length === 1 ? undefined : index + 1);
+      keys.push(s3Key);
 
-      if (["stg", "prd"].includes(env)) {
-        await uploadToS3(s3Key, buffer);
-      } else {
-        await saveToFile(s3Key, buffer);
-      }
+      await saveFile(env, s3Key, buffer);
     });
+
+    resultTargets.push({ ...target, keys });
 
     await page.close();
   };
@@ -46,6 +53,25 @@ export const run = async (
 
   await browserContext.close();
   await browser.close();
+
+  // 結果ファイルのアップロード
+  const s3InfoKey = getS3InfoKey(s3KeyPrefix);
+  let infoJson = await loadJson<PlaywrightRunnerResult>(env, s3InfoKey);
+  if (infoJson) {
+    infoJson.targets.push(...resultTargets);
+  } else {
+    infoJson = { timestamp, baseUrl, targets: resultTargets };
+  }
+  await saveFile(env, s3InfoKey, Buffer.from(JSON.stringify(infoJson)));
+
+  const s3IndexKey = getS3IndexKey();
+  let indexJson = await loadJson<PlaywrightRunnerIndex>(env, s3IndexKey);
+  if (indexJson) {
+    indexJson.push({ timestamp, baseUrl });
+  } else {
+    indexJson = [{ timestamp, baseUrl }];
+  }
+  await saveFile(env, s3IndexKey, Buffer.from(JSON.stringify(indexJson)));
 
   if (nextTargets.length === 0) {
     // 全てのターゲットが処理済みの場合は終了

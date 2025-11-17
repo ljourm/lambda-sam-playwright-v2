@@ -29,3 +29,12 @@ export const getS3KeyPrefix = (baseUrl: string, timestamp: string): string => {
 export const getS3Key = (prefix: string, target: PlaywrightRunnerTarget, num?: number): string => {
   return `${prefix}/${getFileName(target, num)}`;
 };
+
+// 戻り値の例: screenshots/example.com/2025-01-23-01-23-45/info.json
+export const getS3InfoKey = (prefix: string): string => {
+  return `${prefix}/info.json`;
+};
+
+export const getS3IndexKey = (): string => {
+  return `screenshots/index.json`;
+};
