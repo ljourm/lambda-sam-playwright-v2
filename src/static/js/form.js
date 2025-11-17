@@ -3,7 +3,7 @@
 const API_PATH = "/api/v1/snapshot";
 
 /**
- * @param {{ baseUrl: string, targets: Array<{ path: string, width: number }> }} requestBody
+ * @param {{ baseUrl: string, targets: { path: string, width: number, fullPage?: boolean, beforeEvaluate?: string }[] }} requestBody
  */
 const sendSnapshotRequest = async (requestBody) => {
   const res = await fetch(API_PATH, {
