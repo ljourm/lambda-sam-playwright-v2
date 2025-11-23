@@ -45,7 +45,8 @@ curl -L -o src/layers/font/fonts/NotoSansJP.ttf "https://github.com/google/fonts
 ### SAMプロジェクトのビルド
 
 ```sh
-sam build
+pnpm build
+# sam build と同じ結果となる
 ```
 
 ## ローカルテスト

@@ -4,7 +4,7 @@
 
 ローカル上にAWSのプロファイル設定が揃っていること
 
-## 手順
+## 手順 (SAM)
 
 ### ビルド
 
@@ -18,10 +18,10 @@ pnpm build
 export AWS_PROFILE=${YOUR_AWS_PROFILE}
 
 # STG環境にデプロイ
-sam deploy --config-env stg
+pnpm deploy:stg:sam
 
 # PRD環境にデプロイ
-sam deploy --config-env prd
+pnpm deploy:prd:sam
 ```
 
 ## デプロイ後の動作確認
@@ -40,4 +40,18 @@ curl https://ixnsjwskxk.execute-api.ap-northeast-1.amazonaws.com/Prod/api/health
 
 ```sh
 curl -X POST https://ixnsjwskxk.execute-api.ap-northeast-1.amazonaws.com/Prod/api/v1/snapshot -d "{\"baseUrl\":\"https://example.com/\",\"targets\":[{\"path\":\"/\",\"width\":1200},{\"path\":\"/\",\"width\":480},{\"path\":\"/articles/\",\"width\":1200},{\"path\":\"/articles/\",\"width\":480}]}"
+```
+
+## 手順 (静的ファイル)
+
+### デプロイ
+
+```sh
+export AWS_PROFILE=${YOUR_AWS_PROFILE}
+
+# STG環境にデプロイ
+pnpm deploy:stg:static
+
+# PRD環境にデプロイ
+pnpm deploy:prd:static
 ```
