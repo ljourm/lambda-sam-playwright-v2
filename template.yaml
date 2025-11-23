@@ -279,6 +279,24 @@ Resources:
             FunctionAssociations:
               - EventType: viewer-request
                 FunctionARN: !GetAtt CloudFrontFunctionRequestAllowSpecificIP.FunctionARN
+          - PathPattern: /snapshots/*.json
+            TargetOriginId: S3SnapshotBucketOrigin
+            ViewerProtocolPolicy: redirect-to-https
+            AllowedMethods:
+              - GET
+              - HEAD
+            CachedMethods:
+              - GET
+              - HEAD
+            # CloudFront標準キャッシュポリシーID: CachingDisabled
+            # https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policy-caching-disabled
+            CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad
+            # CloudFront標準オリジンリクエストポリシーID: CORS-S3Origin
+            # https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-cors-s3
+            OriginRequestPolicyId: 88a5eaf4-2fd4-4709-b370-b4c650ea3fcf
+            FunctionAssociations:
+              - EventType: viewer-request
+                FunctionARN: !GetAtt CloudFrontFunctionRequestAllowSpecificIP.FunctionARN
         PriceClass: PriceClass_200
         DefaultRootObject: index.html
         Enabled: true
