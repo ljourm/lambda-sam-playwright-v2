@@ -1,29 +1,20 @@
 <mxfile host="65bd71144e">
     <diagram id="4R--MOeFsxBFM0oROPrH" name="Page-1">
-        <mxGraphModel dx="1702" dy="1076" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="854" dy="744" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="82" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
-                    <mxGeometry width="1400" height="760" as="geometry"/>
+                <mxCell id="82" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;fontSize=13;" parent="1" vertex="1">
+                    <mxGeometry width="1930" height="1270" as="geometry"/>
+                </mxCell>
+                <mxCell id="115" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#999999;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="1430" y="20" width="460" height="380" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="AWS Cloud" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=#AAB7B8;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#AAB7B8;dashed=0;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="40" width="1080" height="680" as="geometry"/>
-                </mxCell>
-                <mxCell id="79" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=none;opacity=50;" parent="1" vertex="1">
-                    <mxGeometry x="580" y="340" width="270" height="340" as="geometry"/>
-                </mxCell>
-                <mxCell id="77" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=none;opacity=50;" parent="1" vertex="1">
-                    <mxGeometry x="870" y="320" width="450" height="360" as="geometry"/>
-                </mxCell>
-                <mxCell id="76" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=none;opacity=50;" parent="1" vertex="1">
-                    <mxGeometry x="320" y="120" width="260" height="560" as="geometry"/>
-                </mxCell>
-                <mxCell id="75" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=none;opacity=50;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="120" width="720" height="200" as="geometry"/>
+                    <mxGeometry x="270" y="20" width="1040" height="1230" as="geometry"/>
                 </mxCell>
                 <mxCell id="23" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="400" y="160" width="80" height="110" as="geometry"/>
+                    <mxGeometry x="390" y="420" width="80" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" parent="23" vertex="1">
                     <mxGeometry width="80" height="80" as="geometry"/>
@@ -31,75 +22,57 @@
                 <mxCell id="20" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;CloudFront&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="23" vertex="1">
                     <mxGeometry y="80" width="80" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="640" y="160" width="80" height="110" as="geometry"/>
-                </mxCell>
-                <mxCell id="6" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" parent="25" vertex="1">
-                    <mxGeometry width="80" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="24" value="ApiGateway" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="25" vertex="1">
-                    <mxGeometry y="80" width="80" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="30" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="930" y="545" width="140" height="120" as="geometry"/>
-                </mxCell>
-                <mxCell id="3" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" parent="30" vertex="1">
-                    <mxGeometry x="30" width="80" height="80" as="geometry"/>
-                </mxCell>
-                <mxCell id="18" value="S3&lt;div&gt;スナップショット格納先&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="30" vertex="1">
-                    <mxGeometry y="80" width="140" height="40" as="geometry"/>
-                </mxCell>
                 <mxCell id="34" value="" style="endArrow=classic;html=1;exitX=0.98;exitY=0.51;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="118.40000000000009" y="190.79999999999995" as="sourcePoint"/>
-                        <mxPoint x="400" y="190" as="targetPoint"/>
+                        <mxPoint x="108.40000000000009" y="450.79999999999995" as="sourcePoint"/>
+                        <mxPoint x="390" y="450" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="36" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="960" y="160" width="80" height="120" as="geometry"/>
+                    <mxGeometry x="950" y="420" width="90" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="2" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" parent="36" vertex="1">
                     <mxGeometry width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="35" value="Lambda&lt;div&gt;処理の起動用&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="36" vertex="1">
-                    <mxGeometry y="80" width="80" height="40" as="geometry"/>
+                <mxCell id="35" value="Lambda&lt;div&gt;api-v1-snapshot&lt;br&gt;&lt;div&gt;処理の起動用&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="36" vertex="1">
+                    <mxGeometry x="-10" y="80" width="100" height="43.33" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value="HTTP Request" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="140" y="160" width="100" height="30" as="geometry"/>
+                    <mxGeometry x="130" y="420" width="100" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="41" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="480" y="180" as="sourcePoint"/>
-                        <mxPoint x="640" y="180" as="targetPoint"/>
+                        <mxPoint x="470" y="440" as="sourcePoint"/>
+                        <mxPoint x="630" y="440" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="42" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="4" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="490" y="210" as="sourcePoint"/>
-                        <mxPoint x="640" y="390" as="targetPoint"/>
+                        <mxPoint x="480" y="470" as="sourcePoint"/>
+                        <mxPoint x="630" y="650" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="560" y="220"/>
-                            <mxPoint x="560" y="390"/>
+                            <mxPoint x="550" y="480"/>
+                            <mxPoint x="550" y="650"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="44" value="(other)" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="490" y="194" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="480" y="454" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="47" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="35" target="38" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="730" y="210" as="sourcePoint"/>
-                        <mxPoint x="970" y="210" as="targetPoint"/>
+                        <mxPoint x="720" y="470" as="sourcePoint"/>
+                        <mxPoint x="960" y="470" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="48" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="930" y="360" width="140" height="120" as="geometry"/>
+                    <mxGeometry x="920" y="620" width="140" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="38" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" parent="48" vertex="1">
                     <mxGeometry x="30" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="Lambda&lt;div&gt;スナップショット撮影&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="48" vertex="1">
-                    <mxGeometry y="80" width="140" height="40" as="geometry"/>
+                <mxCell id="39" value="Lambda&lt;div&gt;playwright-runner&lt;br&gt;&lt;div&gt;スナップショット撮影&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="48" vertex="1">
+                    <mxGeometry y="80" width="140" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="60" value="" style="endArrow=classic;html=1;exitX=0.784;exitY=1.02;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" parent="48" source="39" target="38" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -112,66 +85,66 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="49" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="39" target="3" edge="1">
+                <mxCell id="49" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="38" target="32" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="1000" y="490" as="sourcePoint"/>
-                        <mxPoint x="1010" y="370" as="targetPoint"/>
+                        <mxPoint x="990" y="750" as="sourcePoint"/>
+                        <mxPoint x="990" y="805" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="52" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="640" y="190" as="sourcePoint"/>
-                        <mxPoint x="480" y="190" as="targetPoint"/>
+                        <mxPoint x="630" y="450" as="sourcePoint"/>
+                        <mxPoint x="470" y="450" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="50" value="" style="endArrow=classic;html=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="960" y="210" as="sourcePoint"/>
-                        <mxPoint x="720" y="210" as="targetPoint"/>
+                        <mxPoint x="950" y="470" as="sourcePoint"/>
+                        <mxPoint x="710" y="470" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="45" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="720" y="189.99999999999994" as="sourcePoint"/>
-                        <mxPoint x="960" y="189.99999999999994" as="targetPoint"/>
+                        <mxPoint x="710" y="449.99999999999994" as="sourcePoint"/>
+                        <mxPoint x="950" y="449.99999999999994" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="46" value="POST /api/snapshot" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="740" y="160" width="120" height="30" as="geometry"/>
+                    <mxGeometry x="730" y="420" width="120" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="51" value="&lt;div&gt;スナップショット撮影処理の起動後、すぐにレスポンスを返す&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="740" y="210" width="210" height="40" as="geometry"/>
+                    <mxGeometry x="730" y="470" width="210" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="43" value="/api/*" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="490" y="150" width="60" height="30" as="geometry"/>
+                    <mxGeometry x="480" y="410" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="54" value="" style="endArrow=classic;html=1;entryX=0.994;entryY=0.613;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="13" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="400" y="210" as="sourcePoint"/>
-                        <mxPoint x="270" y="210" as="targetPoint"/>
+                        <mxPoint x="390" y="470" as="sourcePoint"/>
+                        <mxPoint x="260" y="470" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="55" value="HTTP Response" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="140" y="210" width="100" height="30" as="geometry"/>
+                    <mxGeometry x="130" y="470" width="100" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="58" value="" style="endArrow=classic;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;" parent="1" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="640" y="400" as="sourcePoint"/>
-                        <mxPoint x="480" y="230" as="targetPoint"/>
+                        <mxPoint x="630" y="660" as="sourcePoint"/>
+                        <mxPoint x="470" y="490" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="550" y="400"/>
-                            <mxPoint x="550" y="230"/>
+                            <mxPoint x="540" y="660"/>
+                            <mxPoint x="540" y="490"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="59" value="&lt;div&gt;Lambdaをinvoke&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="1010" y="280" width="110" height="40" as="geometry"/>
+                <mxCell id="59" value="&lt;div&gt;invoke&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="950" y="550" width="110" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="61" value="&lt;div&gt;1回(最大15分)で完了しない場合、&lt;/div&gt;&lt;div&gt;実行開始から14分目頃に自身を再度呼び出す&lt;/div&gt;&lt;div&gt;(呼び出しの最大回数の指定あり)&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="1050" y="340" width="250" height="60" as="geometry"/>
+                    <mxGeometry x="1040" y="600" width="250" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="63" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="40" y="160" width="80" height="110" as="geometry"/>
+                    <mxGeometry x="30" y="420" width="80" height="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="13" value="" style="points=[[0.35,0,0],[0.98,0.51,0],[1,0.71,0],[0.67,1,0],[0,0.795,0],[0,0.65,0]];verticalLabelPosition=bottom;sketch=0;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.user;fillColor=#005073;strokeColor=none;" parent="63" vertex="1">
                     <mxGeometry width="80" height="80" as="geometry"/>
@@ -180,7 +153,7 @@
                     <mxGeometry y="80" width="80" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="65" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="320" y="120" width="80" height="70" as="geometry"/>
+                    <mxGeometry x="290" y="380" width="80" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="5" value="" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.cloudfront_functions;" parent="65" vertex="1">
                     <mxGeometry x="20" width="40" height="40" as="geometry"/>
@@ -189,37 +162,160 @@
                     <mxGeometry y="40" width="80" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="68" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="820" y="520" width="80" height="110" as="geometry"/>
+                    <mxGeometry x="630" y="60" width="90" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="66" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudwatch_2;" parent="68" vertex="1">
                     <mxGeometry width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="67" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;CloudWatch&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="68" vertex="1">
-                    <mxGeometry y="80" width="80" height="30" as="geometry"/>
+                <mxCell id="67" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;CloudWatch&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;保持期間 = 3か月&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="68" vertex="1">
+                    <mxGeometry x="-10" y="80" width="100" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="71" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="820" y="370" width="80" height="110" as="geometry"/>
+                    <mxGeometry x="390" y="60" width="140" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="69" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management;" parent="71" vertex="1">
                     <mxGeometry width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="70" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;IAM&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="71" vertex="1">
-                    <mxGeometry y="80" width="80" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="73" value="AWS Samにて構築" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="400" width="160" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="74" value="Terraformにて構築" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="460" width="160" height="40" as="geometry"/>
+                <mxCell id="70" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;IAM&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;GitHub ActionsからStaticファイルを配置するためのIAMを生成&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="71" vertex="1">
+                    <mxGeometry x="-60" y="80" width="200" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="80" value="" style="group" parent="1" vertex="1" connectable="0">
-                    <mxGeometry x="610" y="360" width="140" height="120" as="geometry"/>
+                    <mxGeometry x="600" y="620" width="140" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="32" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" parent="80" vertex="1">
                     <mxGeometry x="30" width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="S3&lt;div&gt;静的コンテンツ&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="80" vertex="1">
+                <mxCell id="33" value="S3&lt;br class=&quot;Apple-interchange-newline&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;保持期間 = 90日&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="80" vertex="1">
                     <mxGeometry y="80" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="950" y="220" width="90" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" parent="83" vertex="1">
+                    <mxGeometry width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="85" value="Lambda&lt;div&gt;api-healthcheck&lt;br&gt;&lt;div&gt;ヘルスチェック用&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="83" vertex="1">
+                    <mxGeometry x="-10" y="80" width="100" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="660" y="420" as="sourcePoint"/>
+                        <mxPoint x="950" y="250" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="660" y="250"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="88" value="" style="endArrow=classic;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="950" y="270" as="sourcePoint"/>
+                        <mxPoint x="680" y="420" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="680" y="270"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="630" y="420" width="80" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;" parent="25" vertex="1">
+                    <mxGeometry width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="ApiGateway" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="25" vertex="1">
+                    <mxGeometry y="80" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="GET /api/healthcheck" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="697" y="220" width="120" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="常に200 OKをレスポンス" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="697" y="270" width="153" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="IP制限" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="350" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="93" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;endArrow=none;endFill=0;spacing=8;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="1" source="122" target="6" edge="1">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="537.9166666666665" y="335" as="sourcePoint"/>
+                        <mxPoint x="570" y="360" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="96" value="&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap-mode: nowrap;&quot;&gt;【ディレクトリ構成】&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; /index.html&lt;/span&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; /js/*.js&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&amp;nbsp; /snapshots&lt;/span&gt;/index.json&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&amp;nbsp; /snapshots/${domain}/${yyyy-MM-dd-HH-mm-ss}/info.json&lt;/span&gt;&lt;/div&gt;&lt;span style=&quot;color: rgb(63, 63, 63); text-wrap-mode: nowrap;&quot;&gt;&amp;nbsp; /snapshots/${domain}/${yyyy-MM-dd-HH-mm-ss}/${path}-${size}.png&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=#6c8ebf;dashed=1;dashPattern=1 1;labelBorderColor=none;fillColor=#dae8fc;spacingLeft=4;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="800" width="390" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;spacing=8;" parent="1" source="96" target="101" edge="1">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="546" y="340" as="sourcePoint"/>
+                        <mxPoint x="560" y="770" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="99" value="&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap; color: rgb(63, 63, 63);&quot;&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; スナップショットを撮影し、以下&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;に保存する。&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap; color: rgb(63, 63, 63);&quot;&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; /snapshots/${domain}/${yyyy-MM-dd-HH-mm-ss}/${path}-${size}.png&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap; background-color: transparent; scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap; background-color: transparent; scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; 処理終了後、以下に結果を保存する。&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;text-wrap-mode: nowrap; background-color: transparent; scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; /snapshots&lt;/span&gt;&lt;span style=&quot;text-wrap-mode: nowrap; background-color: transparent;&quot;&gt;/index.json&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap; color: rgb(63, 63, 63);&quot;&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; /snapshots/${domain}/${yyyy-MM-dd-HH-mm-ss}/info.json&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=#6c8ebf;dashed=1;dashPattern=1 1;labelBorderColor=none;fillColor=#dae8fc;spacingLeft=4;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="760" y="800" width="410" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;spacing=8;" parent="1" target="99" edge="1">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="840" y="660" as="sourcePoint"/>
+                        <mxPoint x="830" y="760" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="101" value="&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap-mode: nowrap;&quot;&gt;【&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;サンプル&lt;/span&gt;】&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;/snapshots&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;/index.json&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent;&quot;&gt;[&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent;&quot;&gt;&amp;nbsp; {&amp;nbsp;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;timestamp&quot;: &quot;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;2025-01-23-01-23-45&quot;&lt;/span&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;baseUrl&quot;: &quot;https://example.com&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: transparent;&quot;&gt;&quot;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;s3InfoFileKey&quot;: &quot;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;/snapshots&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;/&lt;/span&gt;&lt;span style=&quot;background-color: transparent; scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;example.com/&lt;/span&gt;&lt;span style=&quot;background-color: transparent; scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;2025-01-23-01-23-45/&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;info.json&quot;,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;&amp;nbsp; &amp;nbsp; &quot;note&quot;: &quot;サンプル備考&quot;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&amp;nbsp; },&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;&amp;nbsp; ...&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;]&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;strokeColor=#6c8ebf;dashed=1;dashPattern=1 1;labelBorderColor=none;fillColor=#dae8fc;spacingLeft=4;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="990" width="430" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap-mode: nowrap;&quot;&gt;【&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;サンプル&lt;/span&gt;】&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;/snapshots&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;/&lt;/span&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;example.com/&lt;/span&gt;&lt;span style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent; color: rgb(63, 63, 63);&quot;&gt;2025-01-23-01-23-45/&lt;/span&gt;&lt;span style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent;&quot;&gt;info.json&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;{&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &quot;timestamp&quot;: &quot;&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;2025-01-23-01-23-45&lt;/span&gt;&quot;,&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &quot;baseUrl&quot;: &quot;https://example.com/&quot;,&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &quot;note&quot;: サンプル備考&quot;,&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &quot;targets&quot;: [&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &amp;nbsp; {&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;path&quot;: &quot;/&quot;,&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;width&quot;: 1200,&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &quot;keys&quot;: [&quot;screenshots/example.com/&lt;span style=&quot;color: rgb(63, 63, 63);&quot;&gt;2025-01-23-01-23-45&lt;/span&gt;/index-1200.png&quot;]&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &amp;nbsp; },&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; &amp;nbsp; ...&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; ]&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); color: rgb(63, 63, 63);&quot;&gt;}&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;strokeColor=#6c8ebf;dashed=1;dashPattern=1 1;labelBorderColor=none;fillColor=#dae8fc;spacingLeft=4;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="755" y="990" width="445" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;exitX=0.861;exitY=1.026;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;spacing=8;" parent="1" source="96" target="102" edge="1">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="613" y="920" as="sourcePoint"/>
+                        <mxPoint x="530" y="1000" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="107" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;spacing=8;" parent="1" source="33" target="96" edge="1">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="850" y="670" as="sourcePoint"/>
+                        <mxPoint x="878" y="810" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="109" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="1440" y="30" width="110" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.github" parent="109" vertex="1">
+                    <mxGeometry width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="108" value="GitHub Actions" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="109" vertex="1">
+                    <mxGeometry x="-10" y="80" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="110" value="Delopy for AWS Resources&lt;div&gt;- AWSリソースにAWS SAMでデプロイする&lt;/div&gt;&lt;div&gt;- ActionにはAdministratorAccessを持つユーザーのキーを設定する&lt;/div&gt;&lt;div&gt;&amp;nbsp; (キーは自動生成されないため、事前に手動作成する必要がある)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=4;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1460" y="180" width="400" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="111" value="Delopy for Web Static&lt;div&gt;- S3に/src/static/*をデプロイする&lt;br&gt;&lt;/div&gt;&lt;div&gt;- ActionにはAWS SAMからアウトプットされる以下を指定する&lt;/div&gt;&lt;div&gt;&amp;nbsp; -&amp;nbsp;&lt;span style=&quot;background-color: transparent;&quot;&gt;StaticDeploymentUserAccessKeyId&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; - StaticDeploymentUserSecretAccessKey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=4;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1460" y="280" width="400" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="117" value="" style="shape=flexArrow;endArrow=classic;html=1;endWidth=37.02127659574468;endSize=7.701639344262295;width=39.016393442622956;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="1410" y="269.23" as="sourcePoint"/>
+                        <mxPoint x="1330" y="269" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="118" value="Deploy" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1340" y="195" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="120" value="&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap; color: rgb(63, 63, 63);&quot;&gt;Lambda Layer&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap; color: rgb(63, 63, 63);&quot;&gt;- ChromiumLayer&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap; color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; @sparticuz/chromiumを格納&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap; color: rgb(63, 63, 63);&quot;&gt;- NotoSansJpLayer&lt;/div&gt;&lt;div style=&quot;scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap; color: rgb(63, 63, 63);&quot;&gt;&amp;nbsp; 日本語フォントを格納&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=#6c8ebf;dashed=1;dashPattern=1 1;labelBorderColor=none;fillColor=#dae8fc;spacingLeft=4;spacing=8;" parent="1" vertex="1">
+                    <mxGeometry x="1070" y="450" width="209" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="121" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=none;endFill=0;entryX=0;entryY=1;entryDx=0;entryDy=0;spacing=8;exitX=1;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="38" target="120" edge="1">
+                    <mxGeometry width="100" relative="1" as="geometry">
+                        <mxPoint x="850" y="670" as="sourcePoint"/>
+                        <mxPoint x="873" y="810" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="122" value="&lt;span style=&quot;color: rgb(0, 0, 0); text-wrap-mode: nowrap;&quot;&gt;CloudFrontでx-api-keyを付与し、&lt;/span&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;ApiGatewayで検証することで、&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); text-wrap-mode: nowrap;&quot;&gt;ApiGateway直アクセスを禁止している&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;strokeColor=#6c8ebf;dashed=1;dashPattern=1 1;labelBorderColor=none;fillColor=#dae8fc;spacingLeft=4;spacing=8;" vertex="1" parent="1">
+                    <mxGeometry x="370" y="260" width="230" height="75" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
