@@ -104,26 +104,38 @@
           </form>
         </section>
         <section id="section-result" class="box" style="display: none">
-          <h2 class="title is-5">結果一覧 (作成予定)</h2>
+          <h2 class="title is-5">結果一覧</h2>
           <div class="table-container">
-            <!-- <table class="table is-striped is-fullwidth">
+            <table class="table is-striped is-fullwidth">
               <thead>
                 <tr>
-                  <th>名前</th>
-                  <th>メール</th>
+                  <th>タイムスタンプ</th>
+                  <th>対象URL</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="result-index-body"></tbody>
+            </table>
+          </div>
+          <hr />
+          <h3 class="title is-5">詳細</h3>
+          <div class="table-container">
+            <div id="result-detail-info"></div>
+            <table class="table is-striped is-fullwidth">
+              <thead>
                 <tr>
-                  <td>サンプル太郎</td>
-                  <td>sample@example.com</td>
+                  <th>パス</th>
+                  <th>横幅(px)</th>
+                  <th>画像</th>
                 </tr>
+              </thead>
+              <tbody id="result-detail-body">
                 <tr>
-                  <td>テスト花子</td>
-                  <td>test@example.com</td>
+                  <td>(未選択)</td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </tbody>
-            </table> -->
+            </table>
           </div>
         </section>
         <section id="section-document" class="box" style="display: none">
@@ -139,5 +151,6 @@
     </section>
     <script src="./js/tab.js"></script>
     <script src="./js/form.js"></script>
+    <script src="./js/result.js"></script>
   </body>
 </html>
