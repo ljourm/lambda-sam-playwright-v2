@@ -1,6 +1,8 @@
 import Ajv from "ajv";
 
-const ajv = new Ajv.default({ allErrors: true });
+import type { eventRequestBody } from "./types";
+
+const ajv = new Ajv({ allErrors: true });
 
 const requestBodySchema = {
   type: "object",
@@ -25,4 +27,4 @@ const requestBodySchema = {
   additionalProperties: false,
 };
 
-export const validateRequestBody = ajv.compile(requestBodySchema);
+export const validateRequestBody = ajv.compile<eventRequestBody>(requestBodySchema);

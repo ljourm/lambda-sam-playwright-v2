@@ -1,7 +1,7 @@
 import chromium from "@sparticuz/chromium";
 import { chromium as playwright } from "playwright-core";
 
-import { getSafeEnv } from "../env";
+import { getSafeEnv } from "@/lib/env";
 
 import type { Browser, BrowserContext, Route } from "playwright-core";
 

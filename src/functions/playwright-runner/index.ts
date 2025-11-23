@@ -1,7 +1,8 @@
-import { getSafeEnv } from "./lib/env";
+import { getSafeEnv } from "@/lib/env";
+import type { PlaywrightRunnerEvent } from "@/lib/types";
+
 import { run } from "./lib/runner";
 
-import type { PlaywrightRunnerEvent } from "./lib/types";
 import type { Context } from "aws-lambda";
 
 export const handler = async (event: PlaywrightRunnerEvent, context: Context): Promise<string> => {

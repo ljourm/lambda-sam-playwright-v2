@@ -1,6 +1,6 @@
 import { S3Client, PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 
-import { getSafeEnv } from "../env";
+import { getSafeEnv } from "@/lib/env";
 
 import type { PutObjectCommandInput } from "@aws-sdk/client-s3";
 

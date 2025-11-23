@@ -1,7 +1,8 @@
+import { getSafeEnv } from "@/lib/env";
+
 import { callNextLambda } from "./awsHelper/lambda";
 import { processConcurrent } from "./concurrency";
 import { MAX_LAMBDA_LOOP_COUNT } from "./const";
-import { getSafeEnv } from "./env";
 import { getS3IndexKey, getS3InfoFileKey, getS3Key, getS3KeyPrefix } from "./fileName";
 import { getBrowser, getBrowserContext } from "./playwrightHelper/browser";
 import { snapshots } from "./playwrightHelper/snapshot";

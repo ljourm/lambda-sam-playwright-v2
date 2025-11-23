@@ -1,19 +1,12 @@
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
 import { formatInTimeZone } from "date-fns-tz";
 
+import { getSafeEnv } from "@/lib/env";
+import type { PlaywrightRunnerEvent } from "@/lib/types.js";
+
 import { validateRequestBody } from "./validateRequestBody.js";
 
 import type { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
-
-const getSafeEnv = (key: string): string => {
-  const value = process.env[key];
-
-  if (!value) {
-    throw new Error(`Environment variable ${key} is not set`);
-  }
-
-  return value;
-};
 
 export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyResult> => {
   console.log("event:", JSON.stringify(event));
@@ -36,11 +29,9 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyRe
 
   const lambdaClient = new LambdaClient({});
 
-  const payload = {
+  const payload: PlaywrightRunnerEvent = {
     baseUrl: body.baseUrl,
     targets: body.targets,
-    fullPage: body.fullPage,
-    beforeEvaluate: body.beforeEvaluate,
     timestamp: formatInTimeZone(new Date(), "Asia/Tokyo", "yyyy-MM-dd-HH-mm-ss"), // 日本時間（JST）
   };
 
