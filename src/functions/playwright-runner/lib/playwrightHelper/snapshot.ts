@@ -1,7 +1,7 @@
-import { Page } from "playwright-core";
-
 import { MAX_SNAPSHOT_HEIGHT, VIEWPORT_HEIGHT } from "../const";
-import { PlaywrightRunnerTarget } from "../types";
+
+import type { PlaywrightRunnerTarget } from "../types";
+import type { Page } from "playwright-core";
 
 const isSuccessfulStatus = (status?: number): boolean => {
   if (!status) return false;

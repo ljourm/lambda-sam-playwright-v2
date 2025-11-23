@@ -1,9 +1,9 @@
-import { Context } from "aws-lambda";
 import { formatInTimeZone } from "date-fns-tz";
 
-import { PlaywrightRunnerEvent } from "./lib/types";
-
 import { handler } from "./";
+
+import type { PlaywrightRunnerEvent } from "./lib/types";
+import type { Context } from "aws-lambda";
 
 process.env.ENV = "local";
 process.env.WITHOUT_DOCKER = "true";

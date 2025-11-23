@@ -1,4 +1,4 @@
-import { PlaywrightRunnerTarget } from "./types";
+import type { PlaywrightRunnerTarget } from "./types";
 
 const sanitizePath = (path: string): string => {
   return path.replace(/^\/+|\/+$/g, "").replace(/\//g, "_");

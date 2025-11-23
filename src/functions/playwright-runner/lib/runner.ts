@@ -1,5 +1,3 @@
-import { Context } from "aws-lambda";
-
 import { callNextLambda } from "./awsHelper/lambda";
 import { processConcurrent } from "./concurrency";
 import { MAX_LAMBDA_LOOP_COUNT } from "./const";
@@ -8,13 +6,15 @@ import { getS3IndexKey, getS3InfoFileKey, getS3Key, getS3KeyPrefix } from "./fil
 import { getBrowser, getBrowserContext } from "./playwrightHelper/browser";
 import { snapshots } from "./playwrightHelper/snapshot";
 import { loadJson, saveFile } from "./stream";
-import {
+
+import type {
   PlaywrightRunnerEvent,
   PlaywrightRunnerIndex,
   PlaywrightRunnerResult,
   PlaywrightRunnerResultTargets,
   PlaywrightRunnerTarget,
 } from "./types";
+import type { Context } from "aws-lambda";
 
 export const run = async (
   { baseUrl, timestamp, targets, loopCount = 0 }: PlaywrightRunnerEvent,

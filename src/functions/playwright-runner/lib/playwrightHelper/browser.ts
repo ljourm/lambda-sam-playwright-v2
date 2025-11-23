@@ -1,7 +1,9 @@
 import chromium from "@sparticuz/chromium";
-import { Browser, BrowserContext, chromium as playwright, Route } from "playwright-core";
+import { chromium as playwright } from "playwright-core";
 
 import { getSafeEnv } from "../env";
+
+import type { Browser, BrowserContext, Route } from "playwright-core";
 
 // Docker環境かどうかでブラウザの起動方法を切り替ええる。Dockerの場合、@sparticuz/chromiumの環境設定を使用する。
 export const getBrowser = async (): Promise<Browser> => {

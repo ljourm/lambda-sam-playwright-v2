@@ -1,8 +1,9 @@
 import { LambdaClient, InvokeCommand } from "@aws-sdk/client-lambda";
-import type { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
 import { formatInTimeZone } from "date-fns-tz";
 
 import { validateRequestBody } from "./validateRequestBody.js";
+
+import type { APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
 
 const getSafeEnv = (key: string): string => {
   const value = process.env[key];
