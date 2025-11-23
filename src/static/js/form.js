@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   /**
    * スナップショット撮影を実行するAPIを呼び出す
-   * @param {{ baseUrl: string, targets: { path: string, width: number, fullPage?: boolean, beforeEvaluate?: string }[], note?: string }} requestBody
+   * @param {{ baseUrl: string, basicAuth?: { username: string, password: string }, targets: { path: string, width: number, fullPage?: boolean, beforeEvaluate?: string }[], note?: string }} requestBody
    */
   const sendSnapshotRequest = async (requestBody) => {
     const res = await fetch(API_PATH, {

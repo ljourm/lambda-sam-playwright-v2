@@ -18,14 +18,14 @@ import type {
 import type { Context } from "aws-lambda";
 
 export const run = async (
-  { baseUrl, timestamp, targets, loopCount = 0, note }: PlaywrightRunnerEvent,
+  { baseUrl, timestamp, basicAuth, targets, loopCount = 0, note }: PlaywrightRunnerEvent,
   context: Context,
 ) => {
   const env = getSafeEnv("ENV");
   const s3KeyPrefix = getS3KeyPrefix(baseUrl, timestamp);
 
   const browser = await getBrowser();
-  const browserContext = await getBrowserContext(browser);
+  const browserContext = await getBrowserContext(browser, basicAuth);
 
   const resultTargets: PlaywrightRunnerResultTargets = [];
 

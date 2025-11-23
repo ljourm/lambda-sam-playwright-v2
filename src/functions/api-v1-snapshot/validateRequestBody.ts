@@ -8,6 +8,15 @@ const requestBodySchema = {
   type: "object",
   properties: {
     baseUrl: { type: "string" },
+    basicAuth: {
+      type: "object",
+      properties: {
+        username: { type: "string" },
+        password: { type: "string" },
+      },
+      required: ["username", "password"],
+      additionalProperties: false,
+    },
     targets: {
       type: "array",
       items: {
