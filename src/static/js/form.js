@@ -12,6 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const domainSelector = document.getElementById("baseurl-domain");
   const companyCodeInput = document.getElementById("company-code");
   const pathListTextarea = document.getElementById("path-list");
+  const noteTextarea = document.getElementById("note");
   const buttons = document.querySelectorAll("button");
   const fetchPathListButton = document.getElementById("fetch-path-list");
 
@@ -25,6 +26,8 @@ window.addEventListener("DOMContentLoaded", () => {
     !(companyCodeInput instanceof HTMLInputElement) ||
     !pathListTextarea ||
     !(pathListTextarea instanceof HTMLTextAreaElement) ||
+    !noteTextarea ||
+    !(noteTextarea instanceof HTMLTextAreaElement) ||
     buttons.length === 0 ||
     !fetchPathListButton
   ) {
@@ -53,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   /**
    * スナップショット撮影を実行するAPIを呼び出す
-   * @param {{ baseUrl: string, targets: { path: string, width: number, fullPage?: boolean, beforeEvaluate?: string }[] }} requestBody
+   * @param {{ baseUrl: string, targets: { path: string, width: number, fullPage?: boolean, beforeEvaluate?: string }[], note?: string }} requestBody
    */
   const sendSnapshotRequest = async (requestBody) => {
     const res = await fetch(API_PATH, {
@@ -110,6 +113,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const requestBody = {
         baseUrl,
         targets,
+        note: noteTextarea.value.trim(),
       };
 
       await sendSnapshotRequest(requestBody);

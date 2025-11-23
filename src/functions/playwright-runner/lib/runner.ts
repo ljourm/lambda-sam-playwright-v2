@@ -18,7 +18,7 @@ import type {
 import type { Context } from "aws-lambda";
 
 export const run = async (
-  { baseUrl, timestamp, targets, loopCount = 0 }: PlaywrightRunnerEvent,
+  { baseUrl, timestamp, targets, loopCount = 0, note }: PlaywrightRunnerEvent,
   context: Context,
 ) => {
   const env = getSafeEnv("ENV");
@@ -61,16 +61,16 @@ export const run = async (
   if (infoJson) {
     infoJson.targets.push(...resultTargets);
   } else {
-    infoJson = { timestamp, baseUrl, targets: resultTargets };
+    infoJson = { timestamp, baseUrl, targets: resultTargets, note };
   }
   await saveFile(env, s3InfoFileKey, Buffer.from(JSON.stringify(infoJson)));
 
   const s3IndexKey = getS3IndexKey();
   let indexJson = await loadJson<PlaywrightRunnerIndex>(env, s3IndexKey);
   if (indexJson) {
-    indexJson.push({ timestamp, baseUrl, s3InfoFileKey });
+    indexJson.push({ timestamp, baseUrl, s3InfoFileKey, note });
   } else {
-    indexJson = [{ timestamp, baseUrl, s3InfoFileKey }];
+    indexJson = [{ timestamp, baseUrl, s3InfoFileKey, note }];
   }
   await saveFile(env, s3IndexKey, Buffer.from(JSON.stringify(indexJson)));
 

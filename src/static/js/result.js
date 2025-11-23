@@ -6,13 +6,14 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   const mockIndexJson = [
     {
-      timestamp: "2025-11-23-14-28-24 (モック使用中)",
+      timestamp: "2025-11-23-14-28-24",
       baseUrl: "https://example.com",
       s3InfoFileKey: "snapshots/example.com/2025-11-23-14-28-24/info.json",
+      note: "モック使用中",
     },
   ];
   const mockInfoJson = {
-    timestamp: "2025-11-23-14-35-55 (モック使用中)",
+    timestamp: "2025-11-23-14-35-55",
     baseUrl: "https://example.com",
     targets: [
       {
@@ -21,10 +22,11 @@ window.addEventListener("DOMContentLoaded", async () => {
         keys: ["snapshots/example.com/2025-11-23-14-35-55/index-1200.png"],
       },
     ],
+    note: "モック使用中",
   };
 
   /**
-   * @returns {Promise<{timestamp: string, baseUrl: string, s3InfoFileKey: string}[]>}
+   * @returns {Promise<{timestamp: string, baseUrl: string, s3InfoFileKey: string, note?: string}[]>}
    */
   const getIndexJson = async () => {
     if (IS_LOCAL) {
@@ -37,7 +39,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   /**
    * @param {string} s3InfoFileKey
-   * @returns {Promise<{timestamp: string, baseUrl: string, targets: {path: string, width: number, keys: string[]}[]}>}
+   * @returns {Promise<{timestamp: string, baseUrl: string, targets: {path: string, width: number, keys: string[]}[], note?: string}>}
    */
   const getDetailJson = async (s3InfoFileKey) => {
     if (IS_LOCAL) {
@@ -71,7 +73,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     .reverse() // 最新順に表示
     .map(
       (detail) =>
-        `<tr><td><a href="#" data-s3-info-file-key="${detail.s3InfoFileKey}">${detail.timestamp}</a></td><td>${detail.baseUrl}</td></tr>`,
+        `<tr><td><a href="#" data-s3-info-file-key="${detail.s3InfoFileKey}">${detail.timestamp}</a></td><td>${detail.baseUrl}</td><td>${detail.note ?? ""}</td></tr>`,
     )
     .join("");
 
@@ -91,6 +93,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       detailInfo.innerHTML = `
             <p>タイムスタンプ: ${infoData.timestamp}</p>
             <p>ベースURL: ${infoData.baseUrl}</p>
+            <p>備考: ${infoData.note ?? ""}</p>
             <p><a href="#" id="bulk-download">画像を一括ダウンロード</a></p>
           `;
 

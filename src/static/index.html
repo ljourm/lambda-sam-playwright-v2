@@ -97,6 +97,15 @@
               <p class="help">1行ごとにパスを入力してください</p>
             </div>
             <div class="field">
+              <label class="label">備考</label>
+              <div class="control">
+                <textarea class="textarea" id="note" rows="3" placeholder="自由入力欄"></textarea>
+              </div>
+              <p class="help">
+                備考に入力した内容はプログラムの制御で使用されず、表示にのみ使用されます
+              </p>
+            </div>
+            <div class="field">
               <div class="control">
                 <button class="button is-primary" type="submit">送信</button>
               </div>
@@ -111,6 +120,7 @@
                 <tr>
                   <th>タイムスタンプ</th>
                   <th>対象URL</th>
+                  <th>備考</th>
                 </tr>
               </thead>
               <tbody id="result-index-body"></tbody>

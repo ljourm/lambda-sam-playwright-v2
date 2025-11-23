@@ -32,6 +32,7 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayProxyRe
   const payload: PlaywrightRunnerEvent = {
     baseUrl: body.baseUrl,
     targets: body.targets,
+    note: body.note,
     timestamp: formatInTimeZone(new Date(), "Asia/Tokyo", "yyyy-MM-dd-HH-mm-ss"), // 日本時間（JST）
   };
 

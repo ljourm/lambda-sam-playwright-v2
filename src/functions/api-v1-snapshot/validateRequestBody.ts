@@ -22,6 +22,7 @@ const requestBodySchema = {
         additionalProperties: false,
       },
     },
+    note: { type: "string" },
   },
   required: ["baseUrl", "targets"],
   additionalProperties: false,
