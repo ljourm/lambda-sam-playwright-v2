@@ -46,7 +46,9 @@ const uploadFile = async (bucketName: string, key: string, filename: string): Pr
   });
 
   const contentType = contentTypes[path.extname(filename)];
-  const cacheControl = contentType === "text/html" ? "no-cache,must-revalidate" : "max-age=2592000";
+  const cacheControl = ["text/html", "text/javascript"].includes(contentType)
+    ? "no-cache,must-revalidate"
+    : "max-age=2592000";
 
   const params = {
     Bucket: bucketName,
@@ -71,7 +73,7 @@ const uploadFiles = async (bucketName: string, filenames: string[]): Promise<voi
 };
 
 const invalidate = async (distributionId: string) => {
-  const paths = ["/index.html", "/*.js"];
+  const paths = ["/index.html", "/js/*"];
   const params = {
     DistributionId: distributionId,
     InvalidationBatch: {
