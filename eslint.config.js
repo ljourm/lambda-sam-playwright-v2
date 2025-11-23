@@ -32,11 +32,21 @@ export default defineConfig(
       "import/order": [
         "error",
         {
+          groups: ["builtin", "external", "parent", "sibling", "index", "object", "type"],
+          pathGroups: [
+            {
+              pattern: "@/**",
+              group: "parent",
+              position: "after",
+            },
+          ],
+          pathGroupsExcludedImportTypes: ["builtin"],
           alphabetize: { order: "asc" },
           "newlines-between": "always",
           warnOnUnassignedImports: true,
         },
       ],
+      "@typescript-eslint/consistent-type-imports": ["error", { prefer: "type-imports" }],
     },
   },
   eslintConfigPrettier,
