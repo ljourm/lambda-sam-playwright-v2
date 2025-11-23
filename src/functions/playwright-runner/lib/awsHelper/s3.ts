@@ -37,12 +37,15 @@ export const uploadToS3 = async (key: string, buffer: Buffer) => {
   const bucketName = getSafeEnv("S3_DEST_BUCKET_NAME");
 
   const contentType = key.endsWith(".json") ? "application/json" : "image/png";
+  const cacheControl =
+    contentType === "application/json" ? "no-cache,must-revalidate" : "max-age=2592000";
 
   const params: PutObjectCommandInput = {
     Bucket: bucketName,
     Key: key,
     Body: buffer,
     ContentType: contentType,
+    CacheControl: cacheControl,
   };
 
   await s3.send(new PutObjectCommand(params));
