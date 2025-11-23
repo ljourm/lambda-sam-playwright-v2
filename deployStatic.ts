@@ -71,7 +71,7 @@ const uploadFiles = async (bucketName: string, filenames: string[]): Promise<voi
 };
 
 const invalidate = async (distributionId: string) => {
-  const paths = ["/*"];
+  const paths = ["/index.html", "/*.js"];
   const params = {
     DistributionId: distributionId,
     InvalidationBatch: {
