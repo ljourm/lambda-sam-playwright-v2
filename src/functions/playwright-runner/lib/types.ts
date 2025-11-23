@@ -25,4 +25,5 @@ export type PlaywrightRunnerResult = {
 export type PlaywrightRunnerIndex = {
   timestamp: string;
   baseUrl: string;
+  s3InfoFileKey: string;
 }[];

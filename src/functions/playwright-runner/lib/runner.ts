@@ -4,7 +4,7 @@ import { callNextLambda } from "./awsHelper/lambda";
 import { processConcurrent } from "./concurrency";
 import { MAX_LAMBDA_LOOP_COUNT } from "./const";
 import { getSafeEnv } from "./env";
-import { getS3IndexKey, getS3InfoKey, getS3Key, getS3KeyPrefix } from "./fileName";
+import { getS3IndexKey, getS3InfoFileKey, getS3Key, getS3KeyPrefix } from "./fileName";
 import { getBrowser, getBrowserContext } from "./playwrightHelper/browser";
 import { snapshots } from "./playwrightHelper/snapshot";
 import { loadJson, saveFile } from "./stream";
@@ -55,21 +55,21 @@ export const run = async (
   await browser.close();
 
   // 結果ファイルのアップロード
-  const s3InfoKey = getS3InfoKey(s3KeyPrefix);
-  let infoJson = await loadJson<PlaywrightRunnerResult>(env, s3InfoKey);
+  const s3InfoFileKey = getS3InfoFileKey(s3KeyPrefix);
+  let infoJson = await loadJson<PlaywrightRunnerResult>(env, s3InfoFileKey);
   if (infoJson) {
     infoJson.targets.push(...resultTargets);
   } else {
     infoJson = { timestamp, baseUrl, targets: resultTargets };
   }
-  await saveFile(env, s3InfoKey, Buffer.from(JSON.stringify(infoJson)));
+  await saveFile(env, s3InfoFileKey, Buffer.from(JSON.stringify(infoJson)));
 
   const s3IndexKey = getS3IndexKey();
   let indexJson = await loadJson<PlaywrightRunnerIndex>(env, s3IndexKey);
   if (indexJson) {
-    indexJson.push({ timestamp, baseUrl });
+    indexJson.push({ timestamp, baseUrl, s3InfoFileKey });
   } else {
-    indexJson = [{ timestamp, baseUrl }];
+    indexJson = [{ timestamp, baseUrl, s3InfoFileKey }];
   }
   await saveFile(env, s3IndexKey, Buffer.from(JSON.stringify(indexJson)));
 
