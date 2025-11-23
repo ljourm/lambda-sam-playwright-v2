@@ -114,14 +114,15 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       detailBody.innerHTML = infoData.targets
         .map((target) => {
+          const url = `${infoData.baseUrl}${target.path}`;
           const keyLinks = target.keys
-            .map(
-              (key) =>
-                `${key.split("/").pop()} ( <a href="/${key}" target="_blank">ブラウザで表示</a> | <a href="/${key}" download>ダウンロード</a> )`,
-            )
+            .map((key) => {
+              const fileName = key.split("/").pop();
+              return `${fileName} ( <a href="/${key}">ブラウザで表示</a> | <a href="/${key}" download>ダウンロード</a> )`;
+            })
             .join("<br/>");
 
-          return `<tr><td>${target.path}</td><td>${target.width}</td><td>${keyLinks}</td></tr>`;
+          return `<tr><td><a href="${url}">${target.path}</a></td><td>${target.width}</td><td>${keyLinks}</td></tr>`;
         })
         .join("");
     });
