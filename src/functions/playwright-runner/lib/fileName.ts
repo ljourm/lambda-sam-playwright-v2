@@ -18,23 +18,23 @@ export const getFileName = (target: PlaywrightRunnerTarget, num?: number): strin
   }
 };
 
-// 戻り値の例: screenshots/example.com/2025-01-23-01-23-45/
+// 戻り値の例: snapshots/example.com/2025-01-23-01-23-45/
 export const getS3KeyPrefix = (baseUrl: string, timestamp: string): string => {
   const domain = baseUrl.replace("https://", "").replace("/", "");
 
-  return `screenshots/${domain}/${timestamp}`;
+  return `snapshots/${domain}/${timestamp}`;
 };
 
-// 戻り値の例: screenshots/example.com/2025-01-23-01-23-45/articles_category_page-1200.png
+// 戻り値の例: snapshots/example.com/2025-01-23-01-23-45/articles_category_page-1200.png
 export const getS3Key = (prefix: string, target: PlaywrightRunnerTarget, num?: number): string => {
   return `${prefix}/${getFileName(target, num)}`;
 };
 
-// 戻り値の例: screenshots/example.com/2025-01-23-01-23-45/info.json
+// 戻り値の例: snapshots/example.com/2025-01-23-01-23-45/info.json
 export const getS3InfoFileKey = (prefix: string): string => {
   return `${prefix}/info.json`;
 };
 
 export const getS3IndexKey = (): string => {
-  return `screenshots/index.json`;
+  return `snapshots/index.json`;
 };
