@@ -22,6 +22,17 @@ window.addEventListener("DOMContentLoaded", () => {
     if (targetSection instanceof HTMLElement) targetSection.style.display = "";
     const targetTab = document.getElementById(`menu-${sectionName}`);
     if (targetTab) targetTab?.classList.add("is-active");
+
+    // URLパラメータを更新
+    if (sectionName == "create") {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("tab");
+      window.history.replaceState({}, "", url.toString());
+    } else {
+      const url = new URL(window.location.href);
+      url.searchParams.set("tab", sectionName);
+      window.history.replaceState({}, "", url.toString());
+    }
   };
 
   const setupTabEvents = () => {
@@ -37,5 +48,13 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   setupTabEvents();
-  showSection("create");
+
+  // 初期表示タブの設定
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialTab = urlParams.get("tab");
+  if (initialTab) {
+    showSection(initialTab);
+  } else {
+    showSection("create");
+  }
 });
