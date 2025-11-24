@@ -186,7 +186,7 @@ Resources:
       Value: !Ref ApiGatewayApiKeyValue
   ApiGatewayUsagePlan:
     Type: AWS::ApiGateway::UsagePlan
-    DependsOn: [ServerlessRestApi, ServerlessRestApiProdStage]
+    DependsOn: ServerlessRestApiProdStage
     Properties:
       UsagePlanName: !Sub "${ProjectName}-${Env}-usage-plan"
       ApiStages:
@@ -194,7 +194,6 @@ Resources:
           Stage: Prod
   ApiGatewayUsagePlanKey:
     Type: AWS::ApiGateway::UsagePlanKey
-    DependsOn: [ApiGatewayUsagePlan, ApiGatewayApiKey]
     Properties:
       KeyId: !Ref ApiGatewayApiKey
       KeyType: API_KEY
