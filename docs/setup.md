@@ -56,7 +56,7 @@ pnpm build
 ```sh
 sam local invoke ApiHealthcheckFunction
 sam local invoke ApiV1SnapshotFunction --event events/api-v1-snapshot/base.json
-sam local invoke PlaywrightRunnerFunction --event events/playwright-runner/base.json
+sam local invoke PlaywrightRunnerFunction --event events/playwright-runner/base.json # ファイルIOが動作していない。test-runner.tsを使用すること。
 ```
 
 ### API Gatewayエミュレーション
