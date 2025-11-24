@@ -38,19 +38,13 @@ const snapshotWithClipping = async (
   return bufferSnapshots;
 };
 
-export const snapshots = async (
-  page: Page,
-  baseUrl: string,
-  target: PlaywrightRunnerTarget,
-): Promise<Buffer[]> => {
-  const url = baseUrl.replace(/\/$/, "") + target.path;
-
+export const snapshots = async (page: Page, target: PlaywrightRunnerTarget): Promise<Buffer[]> => {
   await page.setViewportSize({ width: target.width, height: VIEWPORT_HEIGHT });
-  const response = await page.goto(url);
+  const response = await page.goto(target.path);
 
   // 200〜200、404以外はエラー終了とする
   if (!isSuccessfulStatus(response?.status())) {
-    throw new Error(`Failed to load URL: ${url}, status: ${response?.status()}`);
+    throw new Error(`Failed to load path: ${target.path}, status: ${response?.status()}`);
   }
 
   // beforeEvaluateが指定されていれば実行する

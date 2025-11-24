@@ -25,13 +25,13 @@ export const run = async (
   const s3KeyPrefix = getS3KeyPrefix(baseUrl, timestamp);
 
   const browser = await getBrowser();
-  const browserContext = await getBrowserContext(browser, basicAuth);
+  const browserContext = await getBrowserContext(browser, baseUrl, basicAuth);
 
   const resultTargets: PlaywrightRunnerResultTargets = [];
 
   const snapshotAndSave = async (target: PlaywrightRunnerTarget) => {
     const page = await browserContext.newPage();
-    const buffers = await snapshots(page, baseUrl, target);
+    const buffers = await snapshots(page, target);
     const keys: string[] = [];
 
     buffers.forEach(async (buffer, index) => {

@@ -38,9 +38,11 @@ const doContinueForDomain = (route: Route) => {
 
 export const getBrowserContext = async (
   browser: Browser,
+  baseUrl: string,
   basicAuth?: { username: string; password: string },
 ): Promise<BrowserContext> => {
   const context = await browser.newContext({
+    baseURL: baseUrl,
     httpCredentials: basicAuth,
   });
 
