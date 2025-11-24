@@ -380,6 +380,35 @@ Resources:
             Resource:
               - !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontSnapshotDistribution}"
   # ---- Static Deployment IAM User end ----
+  # ---- SAM Deployment IAM User start ----
+  SAMDeploymentUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Sub "${ProjectName}-${Env}-sam-deployment-user"
+  SAMDeploymentUserAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref SAMDeploymentUser
+  SAMDeploymentUserPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: !Sub "${ProjectName}-${Env}-sam-deployment-policy"
+      Users:
+        - !Ref SAMDeploymentUser
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - cloudformation:*
+              - s3:*
+              - lambda:*
+              - apigateway:*
+              - iam:*
+              - logs:*
+              - cloudfront:*
+            Resource: "*"
+  # ---- SAM Deployment IAM User end ----
 
 Outputs:
   CloudFrontSnapshotDistributionId:
@@ -397,3 +426,9 @@ Outputs:
   StaticDeploymentUserSecretAccessKey:
     Description: "Secret Access Key for Static Deployment User"
     Value: !GetAtt StaticDeploymentUserAccessKey.SecretAccessKey
+  SAMDeploymentUserAccessKeyId:
+    Description: "Access Key ID for SAM Deployment User"
+    Value: !Ref SAMDeploymentUserAccessKey
+  SAMDeploymentUserSecretAccessKey:
+    Description: "Secret Access Key for SAM Deployment User"
+    Value: !GetAtt SAMDeploymentUserAccessKey.SecretAccessKey

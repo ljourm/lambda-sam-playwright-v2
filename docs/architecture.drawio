@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="4R--MOeFsxBFM0oROPrH" name="Page-1">
-        <mxGraphModel dx="1951" dy="929" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="936" dy="592" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -176,7 +176,7 @@
                 <mxCell id="69" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.identity_and_access_management;" parent="71" vertex="1">
                     <mxGeometry width="80" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="70" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;IAM&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;GitHub ActionsからStaticファイルを配置するためのIAMを生成&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="71" vertex="1">
+                <mxCell id="70" value="&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;IAM&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;GitHub Actionsからのデプロイ用の&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;IAMユーザーを生成&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="71" vertex="1">
                     <mxGeometry x="-60" y="80" width="200" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="80" value="" style="group" parent="1" vertex="1" connectable="0">
@@ -289,8 +289,8 @@
                 <mxCell id="108" value="GitHub Actions" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="109" vertex="1">
                     <mxGeometry x="-10" y="80" width="100" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="110" value="Delopy for AWS Resources&lt;div&gt;- AWSリソースにAWS SAMでデプロイする&lt;/div&gt;&lt;div&gt;- ActionにはAdministratorAccessを持つユーザーのキーを設定する&lt;/div&gt;&lt;div&gt;&amp;nbsp; (キーは自動生成されないため、事前に手動作成する必要がある)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=4;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-                    <mxGeometry x="1460" y="180" width="400" height="80" as="geometry"/>
+                <mxCell id="110" value="Delopy for AWS Resources&lt;div&gt;- AWSリソースにAWS SAMでデプロイする&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;- ActionにはAWS SAMからアウトプットされる以下を指定する&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;&amp;nbsp; -&amp;nbsp;&lt;span style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251); background-color: transparent;&quot;&gt;StaticDeploymentUserAccessKeyId&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgb(226, 226, 226) rgb(251, 251, 251);&quot;&gt;&amp;nbsp; - StaticDeploymentUserSecretAccessKey&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; (初回実行時は、手動でsam deployする必要がある)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=4;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+                    <mxGeometry x="1460" y="160" width="400" height="100" as="geometry"/>
                 </mxCell>
                 <mxCell id="111" value="Delopy for Web Static&lt;div&gt;- S3に/src/static/*をデプロイする&lt;br&gt;&lt;/div&gt;&lt;div&gt;- ActionにはAWS SAMからアウトプットされる以下を指定する&lt;/div&gt;&lt;div&gt;&amp;nbsp; -&amp;nbsp;&lt;span style=&quot;background-color: transparent;&quot;&gt;StaticDeploymentUserAccessKeyId&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; - StaticDeploymentUserSecretAccessKey&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=4;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
                     <mxGeometry x="1460" y="280" width="400" height="90" as="geometry"/>
