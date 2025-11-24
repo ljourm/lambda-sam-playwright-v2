@@ -406,20 +406,20 @@ Resources:
               - !Sub "arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontSnapshotDistribution}"
   # ---- Static Deployment IAM User end ----
   # ---- SAM Deployment IAM User start ----
-  SAMDeploymentUser:
+  SamDeploymentUser:
     Type: AWS::IAM::User
     Properties:
       UserName: !Sub "${ProjectName}-${Env}-sam-deployment-user"
-  SAMDeploymentUserAccessKey:
+  SamDeploymentUserAccessKey:
     Type: AWS::IAM::AccessKey
     Properties:
-      UserName: !Ref SAMDeploymentUser
-  SAMDeploymentUserPolicy:
+      UserName: !Ref SamDeploymentUser
+  SamDeploymentUserPolicy:
     Type: AWS::IAM::Policy
     Properties:
       PolicyName: !Sub "${ProjectName}-${Env}-sam-deployment-policy"
       Users:
-        - !Ref SAMDeploymentUser
+        - !Ref SamDeploymentUser
       PolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -451,9 +451,9 @@ Outputs:
   StaticDeploymentUserSecretAccessKey:
     Description: "Secret Access Key for Static Deployment User"
     Value: !GetAtt StaticDeploymentUserAccessKey.SecretAccessKey
-  SAMDeploymentUserAccessKeyId:
+  SamDeploymentUserAccessKeyId:
     Description: "Access Key ID for SAM Deployment User"
-    Value: !Ref SAMDeploymentUserAccessKey
-  SAMDeploymentUserSecretAccessKey:
+    Value: !Ref SamDeploymentUserAccessKey
+  SamDeploymentUserSecretAccessKey:
     Description: "Secret Access Key for SAM Deployment User"
-    Value: !GetAtt SAMDeploymentUserAccessKey.SecretAccessKey
+    Value: !GetAtt SamDeploymentUserAccessKey.SecretAccessKey
