@@ -13,10 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup
+      - uses: ./.github/actions/setup-node
+      - uses: ./.github/actions/setup-sam
       - name: Run prettier
         run: pnpm lint:fmt
       - name: Run eslint
         run: pnpm lint:js
       - name: Run tsc
         run: pnpm lint:ts
+      - name: Run sam validate
+        run: sam validate
+      - name: Run sam build
+        run: sam build

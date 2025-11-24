@@ -27,7 +27,7 @@
     "build": "sam build",
     "deploy:stg:sam": "sam deploy --config-env stg",
     "deploy:prd:sam": "sam deploy --config-env prd",
-    "deploy:stg:static": "tsx deployStatic my-stg-bucket src/static/ E1ABCDEF12345",
+    "deploy:stg:static": "tsx deployStatic lambda-sam-playwright-v2-stg-snapshot src/static/ E3HEFELDL8YCRJ",
     "deploy:prd:static": "tsx deployStatic my-prd-bucket src/static/ E1ABCDEF12345",
     "test": "vitest"
   },
