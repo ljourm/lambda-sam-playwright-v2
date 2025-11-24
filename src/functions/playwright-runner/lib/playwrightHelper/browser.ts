@@ -19,7 +19,9 @@ export const getBrowser = async (): Promise<Browser> => {
 
 // 指定したドメインのみ許可し、それ以外はブロックする
 const doContinueForDomain = (route: Route) => {
-  const allowSnapshotDomains = getSafeEnv("ALLOW_SNAPSHOT_DOMAIN").split(",");
+  const allowSnapshotDomains = getSafeEnv("ALLOW_SNAPSHOT_DOMAIN")
+    .split(",")
+    .map((d) => d.trim());
 
   try {
     const hostname = new URL(route.request().url()).hostname;
