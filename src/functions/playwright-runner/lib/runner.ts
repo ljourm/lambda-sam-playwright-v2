@@ -15,7 +15,30 @@ import type {
 import type { Context } from "aws-lambda";
 
 export const run = async (event: PlaywrightRunnerEvent, context: Context) => {
+  try {
+    await process(event, context);
+  } catch (error) {
+    console.error("Error occurred during processing:", error);
+
+    const status = "failed";
+    await updateIndexFile(event, { status });
+    await updateInfoFile(event, {
+      uploadedTargets: [],
+      status,
+      loopCount: event.loopCount ?? 0,
+      errorMessage: (error as Error).message,
+    });
+
+    throw error;
+  }
+};
+
+const process = async (event: PlaywrightRunnerEvent, context: Context) => {
   const { baseUrl, timestamp, basicAuth, targets, loopCount = 0 } = event;
+
+  // indexファイルの更新（ステータスをrunningに設定）
+  await updateIndexFile(event, { status: "running" });
+  await updateInfoFile(event, { uploadedTargets: [], status: "running", loopCount });
 
   const s3KeyPrefix = getS3KeyPrefix(baseUrl, timestamp);
 
@@ -50,9 +73,9 @@ export const run = async (event: PlaywrightRunnerEvent, context: Context) => {
   await browserContext.close();
   await browser.close();
 
-  // 結果ファイルのアップロード
-  await updateInfoFile(event, uploadedTargets);
-  await updateIndexFile(event);
+  const status = nextTargets.length === 0 ? "completed" : "running";
+  await updateIndexFile(event, { status });
+  await updateInfoFile(event, { uploadedTargets, status, loopCount });
 
   if (nextTargets.length === 0) {
     // 全てのターゲットが処理済みの場合は終了

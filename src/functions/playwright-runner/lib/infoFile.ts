@@ -1,49 +1,77 @@
 import { getS3IndexKey, getS3InfoFileKey, getS3KeyPrefix } from "./fileName";
-import { loadJson, saveFile } from "./stream";
+import { loadJson, saveFileFromJson } from "./stream";
 
 import type {
   PlaywrightRunnerEvent,
   PlaywrightRunnerIndex,
   PlaywrightRunnerResult,
   PlaywrightRunnerResultTargets,
+  RunnerStatus,
 } from "./types";
 
-export const updateIndexFile = async ({ timestamp, baseUrl, note }: PlaywrightRunnerEvent) => {
+export const updateIndexFile = async (
+  { timestamp, baseUrl, note }: PlaywrightRunnerEvent,
+  { status }: { status: RunnerStatus },
+) => {
   const s3KeyPrefix = getS3KeyPrefix(baseUrl, timestamp);
   const s3InfoFileKey = getS3InfoFileKey(s3KeyPrefix);
 
   const s3IndexKey = getS3IndexKey();
 
-  let indexJson = await loadJson<PlaywrightRunnerIndex>(s3IndexKey);
-  if (!indexJson) {
-    // 初回実行時はファイルがないため空配列をセット
-    indexJson = [];
-  }
+  const indexJson = await loadJson<PlaywrightRunnerIndex>(s3IndexKey);
 
-  const info = indexJson.find((item) => item.timestamp === timestamp && item.baseUrl === baseUrl);
-  if (info) {
-    // 既に存在する場合は更新しない
+  if (!indexJson) {
+    // ファイルなし (デプロイ直後)
+    await saveFileFromJson(s3IndexKey, [{ status, timestamp, baseUrl, note, s3InfoFileKey }]);
     return;
   }
 
-  indexJson.push({ timestamp, baseUrl, note, s3InfoFileKey });
-  await saveFile(s3IndexKey, Buffer.from(JSON.stringify(indexJson)));
+  const info = indexJson.find((item) => item.timestamp === timestamp && item.baseUrl === baseUrl);
+
+  if (!info) {
+    // 今回の実行分なし
+    indexJson.push({ status, timestamp, baseUrl, note, s3InfoFileKey });
+    await saveFileFromJson(s3IndexKey, indexJson);
+    return;
+  }
+
+  if (info.status !== status) {
+    // 既に存在し、ステータスが異なる (更新される可能性があるのはstatusのみ)
+    info.status = status;
+    await saveFileFromJson(s3IndexKey, indexJson);
+    return;
+  }
 };
 
 export const updateInfoFile = async (
   { timestamp, baseUrl, note }: PlaywrightRunnerEvent,
-  uploadedTargets: PlaywrightRunnerResultTargets,
+  {
+    uploadedTargets,
+    status,
+    loopCount,
+    errorMessage,
+  }: {
+    uploadedTargets: PlaywrightRunnerResultTargets;
+    status: RunnerStatus;
+    loopCount: number;
+    errorMessage?: string;
+  },
 ) => {
   const s3KeyPrefix = getS3KeyPrefix(baseUrl, timestamp);
   const s3InfoFileKey = getS3InfoFileKey(s3KeyPrefix);
 
-  let infoJson = await loadJson<PlaywrightRunnerResult>(s3InfoFileKey);
+  const previousInfoJson = await loadJson<PlaywrightRunnerResult>(s3InfoFileKey);
+  const previousTargets = previousInfoJson ? previousInfoJson.targets : [];
 
-  if (infoJson) {
-    infoJson.targets.push(...uploadedTargets);
-  } else {
-    infoJson = { timestamp, baseUrl, targets: uploadedTargets, note };
-  }
+  const infoJson: PlaywrightRunnerResult = {
+    status,
+    loopCount: loopCount + 1, // 表示用には0でなく1から始まる数値を使用
+    timestamp,
+    baseUrl,
+    targets: [...previousTargets, ...uploadedTargets],
+    note,
+    errorMessage,
+  };
 
-  await saveFile(s3InfoFileKey, Buffer.from(JSON.stringify(infoJson)));
+  await saveFileFromJson(s3InfoFileKey, infoJson);
 };

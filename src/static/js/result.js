@@ -6,6 +6,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   const mockIndexJson = [
     {
+      status: "completed",
       timestamp: "2025-11-23-14-28-24",
       baseUrl: "https://example.com",
       s3InfoFileKey: "snapshots/example.com/2025-11-23-14-28-24/info.json",
@@ -13,6 +14,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     },
   ];
   const mockInfoJson = {
+    status: "completed",
+    loopCount: 1,
     timestamp: "2025-11-23-14-35-55",
     baseUrl: "https://example.com",
     targets: [
@@ -23,10 +26,11 @@ window.addEventListener("DOMContentLoaded", async () => {
       },
     ],
     note: "モック使用中",
+    errorMessage: undefined,
   };
 
   /**
-   * @returns {Promise<{timestamp: string, baseUrl: string, s3InfoFileKey: string, note?: string}[]>}
+   * @returns {Promise<{status: string, timestamp: string, baseUrl: string, s3InfoFileKey: string, note?: string}[]>}
    */
   const getIndexJson = async () => {
     if (IS_LOCAL) {
@@ -39,7 +43,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   /**
    * @param {string} s3InfoFileKey
-   * @returns {Promise<{timestamp: string, baseUrl: string, targets: {path: string, width: number, keys: string[]}[], note?: string}>}
+   * @returns {Promise<{status: string, loopCount: number, timestamp: string, baseUrl: string, targets: {path: string, width: number, keys: string[]}[], note?: string, errorMessage?: string}>}
    */
   const getDetailJson = async (s3InfoFileKey) => {
     if (IS_LOCAL) {
@@ -73,7 +77,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     .reverse() // 最新順に表示
     .map(
       (detail) =>
-        `<tr><td><a href="#" data-s3-info-file-key="${detail.s3InfoFileKey}">${detail.timestamp}</a></td><td>${detail.baseUrl}</td><td>${detail.note ?? ""}</td></tr>`,
+        `<tr><td><a href="#" data-s3-info-file-key="${detail.s3InfoFileKey}">${detail.timestamp}</a></td><td>${detail.baseUrl}</td><td>${detail.status}</td><td>${detail.note ?? ""}</td></tr>`,
     )
     .join("");
 
@@ -91,9 +95,11 @@ window.addEventListener("DOMContentLoaded", async () => {
       const infoData = await getDetailJson(s3InfoFileKey);
 
       detailInfo.innerHTML = `
+            <p>ステータス: ${infoData.status}, ループ回数: ${infoData.loopCount}</p>
             <p>タイムスタンプ: ${infoData.timestamp}</p>
             <p>ベースURL: ${infoData.baseUrl}</p>
             <p>備考: ${infoData.note ?? ""}</p>
+            ${infoData.errorMessage ? `<p>エラーメッセージ: ${infoData.errorMessage}</p>` : ""}
             <p><a href="#" id="bulk-download">画像を一括ダウンロード</a></p>
           `;
 

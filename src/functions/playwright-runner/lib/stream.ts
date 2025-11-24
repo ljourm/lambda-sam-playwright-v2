@@ -23,3 +23,8 @@ export const saveFile = async (key: string, buffer: Buffer) => {
     await saveToLocalFile(key, buffer);
   }
 };
+
+export const saveFileFromJson = async (key: string, data: unknown) => {
+  const buffer = Buffer.from(JSON.stringify(data));
+  await saveFile(key, buffer);
+};
