@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-01-23-01-23-45",
+  "baseUrl": "https://example.com/",
+  "basicAuth": {
+    "username": "username",
+    "password": "password"
+  },
+  "targets": [
+    {
+      "path": "/",
+      "width": 1200,
+      "fullPage": true,
+      "beforeEvaluate": "console.log('before evaluate');"
+    },
+    { "path": "/", "width": 480 }
+  ],
+  "loopCount": 1,
+  "note": "note"
+}

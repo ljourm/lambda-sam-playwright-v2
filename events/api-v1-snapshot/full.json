@@ -1,0 +1,30 @@
+{
+  "resource": "/{proxy+}",
+  "path": "/api/v1/snapshot",
+  "httpMethod": "POST",
+  "headers": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "queryStringParameters": {
+    "param1": "value1"
+  },
+  "pathParameters": {
+    "proxy": "/api/v1/snapshot"
+  },
+  "stageVariables": null,
+  "requestContext": {
+    "resourceId": "123456",
+    "resourcePath": "/{proxy+}",
+    "httpMethod": "POST",
+    "requestId": "abcdefg-1234-5678-hijk-9876543210",
+    "accountId": "123456789012",
+    "stage": "dev",
+    "identity": {
+      "sourceIp": "192.168.1.1",
+      "userAgent": "Custom User Agent String"
+    }
+  },
+  "body": "{\"baseUrl\":\"https://example.com/\",\"basicAuth\":{\"username\":\"username\",\"password\":\"password\"},\"targets\":[{\"path\":\"/\",\"width\":1200,\"fullPage\":true,\"beforeEvaluate\":\"console.log('beforeevaluate');\"},{\"path\":\"/\",\"width\":480}],\"note\":\"note\"}",
+  "isBase64Encoded": false
+}
