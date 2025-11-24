@@ -114,7 +114,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
       detailBody.innerHTML = infoData.targets
         .map((target) => {
-          const url = `${infoData.baseUrl}${target.path}`;
+          const url = new URL(target.path, infoData.baseUrl).toString();
           const keyLinks = target.keys
             .map((key) => {
               const fileName = key.split("/").pop();
